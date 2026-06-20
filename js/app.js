@@ -219,7 +219,8 @@ async function renderArticleView(app, slug) {
   try {
     const resp = await fetch(`${ARTICLES_DIR}${file}`);
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    const markdown = await resp.text();
+    const raw = await resp.text();
+    const markdown = stripFrontmatter(raw);
     if (typeof marked !== 'undefined') {
       contentDiv.innerHTML = marked.parse(markdown);
     } else {
@@ -266,6 +267,18 @@ function renderAboutPage(app) {
 }
 
 // ---- Utilities ----
+function stripFrontmatter(text) {
+  // Strip YAML frontmatter (between --- markers) from markdown text
+  if (text.startsWith('---\n') || text.startsWith('---\r\n')) {
+    const end = text.indexOf('\n---', 4);
+    if (end !== -1) {
+      const after = text.indexOf('\n', end + 4);
+      return after !== -1 ? text.slice(after + 1) : '';
+    }
+  }
+  return text;
+}
+
 function collectTags(articles) {
   const counts = new Map();
   for (const a of articles) {
