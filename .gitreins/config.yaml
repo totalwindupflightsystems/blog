@@ -9,10 +9,10 @@ guards:
   tests: false
 
 evaluator:
-  max_iterations: 15
+  max_iterations: 25
   max_time: "5m"
   max_input_tokens: "100k"
-  max_output_tokens: "50k"
+  max_output_tokens: "200k"
   tool_call_weight: 0.1
 
 # Python defaults — for scripts/generate-manifest.py
