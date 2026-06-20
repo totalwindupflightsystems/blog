@@ -9,6 +9,38 @@ let manifest = null;          // { title, description, articles: [...] }
 let activeTag = null;         // currently filtered tag, or null
 let searchQuery = '';
 
+// ---- Theme Toggle ----
+(function initTheme() {
+  const toggleBtn = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+
+  function updateUI() {
+    if (!toggleBtn) return;
+    const current = html.getAttribute('data-theme');
+    toggleBtn.setAttribute('aria-label', `Switch to ${current === 'light' ? 'dark' : 'light'} mode`);
+    toggleBtn.textContent = current === 'light' ? '🌙' : '☀️';
+  }
+  updateUI();
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateUI();
+    });
+  }
+
+  // Listen for system preference changes (only if user hasn't set manual preference)
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+      updateUI();
+    }
+  });
+})();
+
 // ---- Init ----
 document.addEventListener('DOMContentLoaded', async () => {
   configureMarked();
