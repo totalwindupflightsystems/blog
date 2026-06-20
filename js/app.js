@@ -273,7 +273,7 @@ function stripFrontmatter(text) {
     const end = text.indexOf('\n---', 4);
     if (end !== -1) {
       const after = text.indexOf('\n', end + 4);
-      return after !== -1 ? text.slice(after + 1) : '';
+      return after !== -1 ? text.slice(after + 1).trimStart() : '';
     }
   }
   return text;
