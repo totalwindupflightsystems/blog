@@ -3,7 +3,7 @@
 # Secrets guard only: blocks API keys, tokens, and passwords.
 
 guards:
-  test_mode: "diff"
+  test_mode: "full"
   secrets: true
   lint: false
   tests: false
