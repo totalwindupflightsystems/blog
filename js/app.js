@@ -70,7 +70,10 @@ function route() {
   const app = document.getElementById('app');
 
   if (hash === '/' || hash === '') renderList(app);
-  else if (hash.startsWith('/post/')) renderPost(app, hash.slice(6));
+  else if (hash.startsWith('/post/')) {
+    const slug = hash.slice(6).split('?')[0];
+    renderPost(app, slug);
+  }
   else if (hash === '/tags') renderTags(app);
   else if (hash === '/about') renderAbout(app);
   else app.innerHTML = '<div class="loading">Not found.</div>';
