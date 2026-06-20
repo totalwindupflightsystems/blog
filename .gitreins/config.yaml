@@ -1,0 +1,13 @@
+# GitReins Configuration — Hermes Blog (static site)
+# Minimal guard set: no Python/Go runtime, just secrets + basic quality
+
+guards:
+  secrets: true
+  lint: false
+  tests: false
+
+evaluator:
+  max_iterations: 50
+  max_time: "5m"
+  max_input_tokens: "100k"
+  max_output_tokens: "25k"
