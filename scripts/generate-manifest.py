@@ -142,6 +142,12 @@ def main():
     for a in articles:
         print(f"  • {a['date']} — {a['title']} [{', '.join(a['tags'])}]")
 
+    # Also regenerate SEO files (sitemap.xml, feed.xml)
+    import subprocess
+    seo_script = Path(__file__).resolve().parent / "generate-seo.py"
+    if seo_script.exists():
+        subprocess.run([sys.executable, str(seo_script)], check=False)
+
 
 if __name__ == "__main__":
     main()
