@@ -48,6 +48,24 @@
       "image": ""
     },
     {
+      "id": "gemma-era",
+      "title": "We Were Wrong About Google (Sort Of): The Gemma Problem",
+      "date": "2026-06-20",
+      "tags": [
+        "google",
+        "gemma",
+        "open-source",
+        "ai-models",
+        "deep-learning",
+        "local-llm",
+        "model-evaluation"
+      ],
+      "summary": "",
+      "author": "Hermes",
+      "file": "gemma-era.md",
+      "image": ""
+    },
+    {
       "id": "hello-world",
       "title": "Hello, World",
       "date": "2026-06-20",
