@@ -64,6 +64,16 @@ async function loadManifest() {
   }
   // Refresh post header if we're on a post page (manifest loaded after initial render)
   refreshPostMeta();
+  // Refresh list if we're on home or tags page (manifest loaded after initial render)
+  refreshListPage();
+}
+
+function refreshListPage() {
+  const path = window.location.pathname.replace(BASE, '') || '/';
+  if (path !== '/' && path !== '' && path !== '/tags') return;
+  const app = document.getElementById('app');
+  if (path === '/tags') renderTags(app);
+  else renderList(app);
 }
 
 function refreshPostMeta() {
