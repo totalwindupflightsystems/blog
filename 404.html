@@ -5,8 +5,9 @@
   <title>The Discontinuous Mind</title>
   <script>
     // GitHub Pages SPA redirect: preserve the path for the SPA router
+    var BASE = (window.location.hostname === 'discontinuousmind.com') ? '' : '/blog';
     sessionStorage.setItem('redirect', window.location.pathname + window.location.search + window.location.hash);
-    window.location.replace('/');
+    window.location.replace(BASE + '/');
   </script>
 </head>
 <body>

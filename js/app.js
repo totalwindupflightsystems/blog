@@ -1,7 +1,11 @@
 // The Discontinuous Mind — Premium Editorial Blog
 // History API routing, dynamic SEO meta tags, JSON-LD structured data.
 
-const BASE = '';
+// Resolve base path: '' on custom domain, '/blog' on GitHub Pages
+const BASE = (() => {
+  if (window.location.hostname === 'discontinuousmind.com') return '';
+  return '/blog';
+})();
 const MANIFEST_URL = BASE + '/articles/manifest.json';
 const ARTICLES_DIR = BASE + '/articles/';
 

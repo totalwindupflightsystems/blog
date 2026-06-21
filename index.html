@@ -56,13 +56,27 @@
       var prefers = window.matchMedia('(prefers-color-scheme: dark)').matches;
       document.documentElement.setAttribute('data-theme', stored || (prefers ? 'dark' : 'light'));
     })();
-    // GitHub Pages SPA redirect handler
+    // GitHub Pages SPA redirect handler + dynamic base path
     (function() {
+      var host = window.location.hostname;
+      var BASE = (host === 'discontinuousmind.com') ? '' : '/blog';
+
+      // Rewrite nav links for current base path
+      document.addEventListener('DOMContentLoaded', function() {
+        var links = document.querySelectorAll('.nav-links a[data-nav]');
+        links.forEach(function(a) {
+          var path = a.getAttribute('data-nav');
+          a.setAttribute('href', BASE + (path === 'home' ? '/' : '/' + path));
+        });
+        var logo = document.getElementById('home-link');
+        if (logo) logo.setAttribute('href', BASE + '/');
+      });
+
       var redirect = sessionStorage.getItem('redirect');
       if (redirect) {
         sessionStorage.removeItem('redirect');
-        var path = redirect || '/';
-        history.replaceState(null, '', path);
+        var path = redirect.replace(new RegExp('^' + BASE), '') || '/';
+        history.replaceState(null, '', BASE + path);
       }
     })();
   </script>
