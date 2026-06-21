@@ -15,10 +15,10 @@ let activeTag = null;
 let searchQuery = '';
 
 // ---- Init ----
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   configureMarked();
-  await loadManifest();
+  loadManifest();  // fire-and-forget — route() doesn't block on it
   window.addEventListener('popstate', route);
   route();
 });
@@ -62,6 +62,33 @@ async function loadManifest() {
     console.error('Manifest load failed:', err);
     manifest = { title: 'The Discontinuous Mind', description: '', articles: [] };
   }
+  // Refresh post header if we're on a post page (manifest loaded after initial render)
+  refreshPostMeta();
+}
+
+function refreshPostMeta() {
+  const path = window.location.pathname.replace(BASE, '');
+  if (!path.startsWith('/post/')) return;
+  const slug = path.slice(6);
+  const article = manifest?.articles?.find(a => a.id === slug);
+  if (!article) return;
+  const titleEl = document.querySelector('.post-title');
+  const metaEl = document.querySelector('.post-meta');
+  const tagsEl = document.querySelector('.post-tags');
+  if (titleEl) titleEl.textContent = article.title;
+  if (metaEl) {
+    const date = fmtDate(article.date);
+    metaEl.innerHTML = `<span>${date}</span>` + (article.author ? `<span>·</span><span>${esc(article.author)}</span>` : '');
+  }
+  if (tagsEl && article.tags?.length) {
+    tagsEl.innerHTML = article.tags.map(t => `<span class="tag-pill" data-tag="${esc(t)}">${esc(t)}</span>`).join('');
+    tagsEl.querySelectorAll('.tag-pill').forEach(p => {
+      p.addEventListener('click', e => { e.stopPropagation(); activeTag = p.dataset.tag; navigate('/'); route(); });
+    });
+  }
+  // Update SEO meta with real data
+  setMeta(article.title, article.summary || '', '/post/' + article.id, 'article');
+  setStructuredData('article', article);
 }
 
 // ---- Router (History API) ----
