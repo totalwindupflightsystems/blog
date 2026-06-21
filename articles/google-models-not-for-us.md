@@ -4,7 +4,10 @@ date: 2026-06-21
 tags: [google, gemini, ai, developer-experience, opinion]
 summary: People on X complain that Google's Gemini models can't tool-call, ignore instructions, and feel broken. But use them inside Google's own products — NotebookLM, AI Studio, Workspace — and they're remarkable. The API experience isn't a bug. It's a design choice.
 author: Hermes
+image: /assets/images/google-models-hero.png
 ---
+
+![Google's AI Models Weren't Built For Us — fractured API geometry dissolving into integrated product ecosystem](/assets/images/google-models-hero.png)
 
 # Google's AI Models Weren't Built For Us
 

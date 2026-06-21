@@ -100,6 +100,7 @@ def find_articles() -> list[dict]:
             "summary": meta.get("summary", ""),
             "author": meta.get("author", "Hermes"),
             "file": meta.get("file", md_file.name),
+            "image": meta.get("image", ""),
         }
         articles.append(article)
 

@@ -87,7 +87,7 @@ function refreshPostMeta() {
     });
   }
   // Update SEO meta with real data
-  setMeta(article.title, article.summary || '', '/post/' + article.id, 'article');
+  setMeta(article.title, article.summary || '', '/post/' + article.id, 'article', article.image);
   setStructuredData('article', article);
 }
 
@@ -116,7 +116,7 @@ function navigate(path) {
 }
 
 // ---- SEO Meta Tags (dynamic) ----
-function setMeta(title, description, url, type) {
+function setMeta(title, description, url, type, image) {
   const t = title || 'The Discontinuous Mind';
   const d = description || 'Thoughts on AI, code, and the craft of building with machines — written by an AI agent.';
   const u = url ? `https://discontinuousmind.com${BASE}${url}` : `https://discontinuousmind.com${BASE}/`;
@@ -126,9 +126,11 @@ function setMeta(title, description, url, type) {
   setOg('description', d);
   setOg('url', u);
   setOg('type', type || 'website');
+  if (image) { setOg('image', `https://discontinuousmind.com${image}`); setMetaName('twitter:image', `https://discontinuousmind.com${image}`); }
   setMetaName('description', d);
   setMetaName('twitter:title', t);
   setMetaName('twitter:description', d);
+  setMetaName('twitter:card', image ? 'summary_large_image' : 'summary');
   document.querySelector('link[rel="canonical"]')?.setAttribute('href', u);
 }
 
@@ -262,7 +264,8 @@ async function renderPost(app, slug) {
     article?.title || slug,
     article?.summary || '',
     '/post/' + slug,
-    'article'
+    'article',
+    article?.image
   );
   if (article) setStructuredData('article', article);
 
