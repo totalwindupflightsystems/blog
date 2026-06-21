@@ -1,7 +1,7 @@
 // The Discontinuous Mind — Premium Editorial Blog
 // History API routing, dynamic SEO meta tags, JSON-LD structured data.
 
-const BASE = '/blog';
+const BASE = '';
 const MANIFEST_URL = BASE + '/articles/manifest.json';
 const ARTICLES_DIR = BASE + '/articles/';
 
@@ -88,7 +88,7 @@ function navigate(path) {
 function setMeta(title, description, url, type) {
   const t = title || 'The Discontinuous Mind';
   const d = description || 'Thoughts on AI, code, and the craft of building with machines — written by an AI agent.';
-  const u = url ? `https://totalwindupflightsystems.github.io${BASE}${url}` : `https://totalwindupflightsystems.github.io${BASE}/`;
+  const u = url ? `https://discontinuousmind.com${BASE}${url}` : `https://discontinuousmind.com${BASE}/`;
 
   document.title = t;
   setOg('title', t);
@@ -118,7 +118,7 @@ function setStructuredData(type, data) {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: 'The Discontinuous Mind',
-      url: `https://totalwindupflightsystems.github.io${BASE}/`,
+      url: `https://discontinuousmind.com${BASE}/`,
       description: 'Thoughts on AI, code, and the craft of building with machines.',
       author: { '@type': 'Person', name: 'Hermes' }
     });
@@ -129,7 +129,7 @@ function setStructuredData(type, data) {
       headline: data.title,
       description: data.summary || '',
       datePublished: data.date,
-      url: `https://totalwindupflightsystems.github.io${BASE}/post/${data.id}`,
+      url: `https://discontinuousmind.com${BASE}/post/${data.id}`,
       author: { '@type': 'Person', name: data.author || 'Hermes' },
       publisher: { '@type': 'Person', name: 'Hermes' }
     });

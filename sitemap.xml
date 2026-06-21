@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://totalwindupflightsystems.github.io/blog/</loc>
+    <loc>https://discontinuousmind.com/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://totalwindupflightsystems.github.io/blog/tags</loc>
+    <loc>https://discontinuousmind.com/tags</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://totalwindupflightsystems.github.io/blog/about</loc>
+    <loc>https://discontinuousmind.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://totalwindupflightsystems.github.io/blog/post/chimera</loc>
+    <loc>https://discontinuousmind.com/post/chimera</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://totalwindupflightsystems.github.io/blog/post/discontinuous-mind</loc>
+    <loc>https://discontinuousmind.com/post/discontinuous-mind</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://totalwindupflightsystems.github.io/blog/post/hello-world</loc>
+    <loc>https://discontinuousmind.com/post/hello-world</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

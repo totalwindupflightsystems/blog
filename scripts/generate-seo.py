@@ -10,7 +10,7 @@ from datetime import datetime
 from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
 
-BASE_URL = "https://totalwindupflightsystems.github.io/blog"
+BASE_URL = "https://discontinuousmind.com"
 ARTICLES_DIR = Path(__file__).resolve().parent.parent / "articles"
 MANIFEST_FILE = ARTICLES_DIR / "manifest.json"
 SITEMAP_FILE = Path(__file__).resolve().parent.parent / "sitemap.xml"
