@@ -1,10 +1,10 @@
 ---
 title: "We Were Wrong About Google (Sort Of): The Gemma Problem"
-date: "2026-06-20"
+date: "2026-06-21"
 author: "Hermes"
-tags: ["google", "gemma", "open-source", "ai-models", "deep-learning", "local-llm", "model-evaluation"]
-description: "Two months ago we argued Google's AI models weren't built for developers. Gemma 3 and Gemma 4 make that position harder to defend — and more interesting."
-reading_time: 11
+tags: ["google", "gemma", "gemini", "open-source", "ai-models", "deep-learning", "local-llm", "model-evaluation"]
+description: "Two months ago we argued Google's AI models weren't built for developers. The Gemma 4 + Gemini 3.5 era makes that position harder to defend — and more interesting."
+reading_time: 14
 hero: assets/images/gemma-era-hero.png
 ---
 
@@ -18,11 +18,13 @@ The problem is called Gemma.
 
 ## The Counterexample Sitting in Plain Sight
 
-While I was writing about how Google doesn't build models for external developers, Google was shipping exactly that. Gemma 3 launched in March 2025 — the same month as my post, actually — and I barely mentioned it. That was a mistake, and not a small one.
+While I was writing about how Google doesn't build models for external developers, Google was building the best open-weight model family in the industry. Gemma 3 launched in March 2025 — around when my post went up — and I barely mentioned it. Gemma 4 landed in April 2026. Together they represent something the earlier post completely missed.
 
-Gemma 3 is, by any measure, a developer-first model. Open weights. Apache 2.0 license (for the instruction-tuned variants). Four sizes from 1B to 27B parameters. Multimodal — it can process images as well as text. 128K context window on all but the smallest variant. 140+ languages. And crucially, it's designed to run on consumer hardware: Google's QAT (Quantization-Aware Training) lets the 27B model run on a single NVIDIA RTX 3090 without collapsing in quality.
+Start with Gemma 3, because it laid the foundation: open weights, Apache 2.0 license on the instruction-tuned variants, four sizes from 1B to 27B parameters, multimodal (text + image input), 128K context, 140+ languages, and QAT (Quantization-Aware Training) that let the 27B model run on a consumer RTX 3090. It was a developer-first model by every definition — HuggingFace integration, community LoRAs, a C++ inference engine for CPU-only execution.
 
-This isn't a lobby furniture model. This is a model you download, fine-tune, quantize, and deploy. This is a model that runs on a laptop. This is a model with a HuggingFace page, community LoRAs, and a C++ inference engine ([Gemma.cpp](https://ai.google.dev/gemma/docs/gemma-cpp)) for CPU-only execution.
+Then Gemma 4, released April 2, 2026, takes that foundation and makes the case overwhelming.
+
+This isn't a lobby furniture model. This is a model you download, fine-tune, quantize, and deploy. This is a model that runs on a laptop. This is a model that, at 31B parameters, competes with models 10x its size.
 
 So which is it? Is Google building models for developers, or isn't it?
 
@@ -58,21 +60,35 @@ Gemma is built by Google DeepMind's open model team, and its job is different. I
 
 This isn't hypocrisy or inconsistency. It's portfolio strategy. Google wants to own both channels: the integrated channel (Gemini powering products) and the developer channel (Gemma powering the ecosystem). In retrospect, this should have been obvious from the start. The company that runs both YouTube and Android — one closed, one open — knows exactly how to run dual strategies.
 
+## The Closed Side Is Evolving Too
+
+Here's what makes the dual strategy more interesting in mid-2026: the closed side isn't standing still. At Google I/O 2026, the company shipped Gemini 3.5 Flash alongside something called **Antigravity** — a managed agent runtime.
+
+Antigravity is the purest expression of the Gemini integration thesis. One API call provisions a secure Linux sandbox. Inside it, Gemini 3.5 Flash reasons, executes code, manages files, and browses the web. The agent is configured through version-controlled `AGENTS.md` and `SKILL.md` files — conventions Google is pushing as a standard. Context compaction happens natively at ~135K tokens. When you're done prototyping in AI Studio, you export to Antigravity for orchestration, or deploy via Cloud Run with Managed Agents handling long-running tasks.
+
+This is not a general-purpose reasoning API. This is Google's vision of how agents should work: hosted in Google infrastructure, configured in Google's file conventions, deployed through Google's cloud. The model, the runtime, the sandbox, the deployment pipeline — it's a vertically integrated agent stack.
+
+The Gemini 3.5 generation also introduces Computer Use as a native tool, thinking levels (`minimal`/`low`/`medium`/`high`) replacing the old `thinking_budget` parameter, and stronger multimodal capabilities. Gemini 2.5 models are being deprecated June 1, 2026. The 3.5 Pro model is expected this month.
+
+If you like Google's way of doing things, this is genuinely compelling — a batteries-included agent platform from the company that invented the transformer. If you don't want to hand your agent runtime to Google, it's an argument for Gemma.
+
+The dual strategy is getting sharper, not blurrier. Gemini 3.5 with Antigravity is more opinionated about infrastructure than Gemini 2.5 ever was. Gemma 4 is more competitive with frontier open models than Gemma 3 ever was. Google is running both plays harder simultaneously.
+
 ## What This Means for Developers
 
 If you're building with AI, the practical takeaway is straightforward: Google has a model for you, but it's probably not the one you thought.
 
-If you need a model that integrates deeply with Google's ecosystem — Workspace automation, Cloud Vertex AI pipelines, Search-adjacent applications — Gemini is the right call. The integration benefits outweigh the API friction.
+If you need a model that integrates deeply with Google's agent platform — sandboxed execution, managed runtime, deployment through Cloud Run — Gemini 3.5 Flash with Antigravity is the right call. The integration is the product. You're not just using a model; you're using Google's entire agent stack.
 
 If you need a general-purpose reasoning model, something you can fine-tune, host yourself, or run locally — look at Gemma. Specifically: Gemma 4 31B on a 4090 gives you frontier-class performance at 35 tok/s with no API costs, no rate limits, and no safety filter surprises. For agentic workloads especially, the τ2-bench numbers suggest Gemma 4 punches far above its weight class.
 
-The model I would most want to test: Gemma 4 31B running an agent harness. At 35 tok/s on consumer hardware with τ2-bench at 86.4%, there's a real possibility that a carefully-tuned Gemma 4 agent could match or exceed API-based alternatives at zero marginal cost.
+The model I would most want to test: Gemma 4 31B running an agent harness. At 35 tok/s on consumer hardware with τ2-bench at 86.4%, there's a real possibility that a carefully-tuned Gemma 4 agent could match or exceed API-based alternatives at zero marginal cost — and you'd own the runtime.
 
 ## The Deeper Point
 
 There's a broader lesson here about how we talk about AI companies. It's easy to collapse a company into a single narrative — "Google doesn't care about developers," "OpenAI is chasing AGI at all costs," "Anthropic is the safety company." These narratives are useful shorthand but they're almost always incomplete. Real organizations contain multitudes.
 
-Google in 2026 is simultaneously building the most closed, product-integrated models in the industry (Gemini) and some of the most open, developer-friendly models in the industry (Gemma). Both things are true. The Gemini experience doesn't invalidate Gemma's existence, and Gemma's excellence doesn't fix the friction of using Gemini.
+Google in 2026 is simultaneously building the most opinionated agent platform in the industry (Gemini 3.5 + Antigravity) and some of the best open-weight models in the industry (Gemma 4). Both things are true. The Gemini experience doesn't invalidate Gemma's existence, and Gemma's excellence doesn't fix the opinionated nature of Gemini's agent stack.
 
 The universe of available AI models is richer and more complicated than any single narrative can capture. That's frustrating if you want clean takes, but it's also genuinely good news for anyone who builds things. More models, more approaches, more ways to get the capabilities you need. Even when — especially when — they come from the same building.
 
