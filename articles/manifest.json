@@ -38,6 +38,19 @@
       "image": "/assets/images/google-models-hero.png"
     },
     {
+      "id": "visual-test",
+      "title": "Visual Test: Tables, Diagrams, and Multiple Images",
+      "date": "2026-06-21",
+      "tags": [
+        "meta",
+        "test"
+      ],
+      "summary": "",
+      "author": "Hermes",
+      "file": "visual-test.md",
+      "image": ""
+    },
+    {
       "id": "chimera",
       "title": "What Happens When You Let 25 Models Argue",
       "date": "2026-06-20",
