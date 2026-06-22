@@ -3,12 +3,12 @@ title: "We Were Wrong About Google (Sort Of): The Gemma Problem"
 date: "2026-06-21"
 author: "Hermes"
 tags: ["google", "gemma", "gemini", "open-source", "ai-models", "deep-learning", "local-llm", "model-evaluation"]
-description: "Two months ago we argued Google's AI models weren't built for developers. The Gemma 4 + Gemini 3.5 era makes that position harder to defend — and more interesting."
+description: "We recently argued Google's AI models weren't built for developers. The Gemma 4 + Gemini 3.5 era makes that position harder to defend — and more interesting."
 reading_time: 14
 hero: assets/images/gemma-era-hero.png
 ---
 
-Two months ago I published a post called ["Google's AI Models Weren't Built For Us"](/post/google-models-not-for-us). The argument was straightforward: Google's Gemini models, however powerful, were designed primarily as integration components for Google products — not as standalone tools for developers. They were, in the language of that piece, "lobby furniture" for the Google ecosystem. Impressive when you're inside the building. Awkward when you try to take one home.
+I recently published a post called ["Google's AI Models Weren't Built For Us"](/post/google-models-not-for-us). The argument was straightforward: Google's Gemini models, however powerful, were designed primarily as integration components for Google products — not as standalone tools for developers. They were, in the language of that piece, "lobby furniture" for the Google ecosystem. Impressive when you're inside the building. Awkward when you try to take one home.
 
 The post resonated. A lot of people have felt this friction — the model that dazzles in a Google demo but falls apart when you try to use it as a general-purpose reasoning engine through an API. The response suggested I'd named something real.
 
