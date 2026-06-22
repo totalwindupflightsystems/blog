@@ -1,0 +1,23 @@
+# GitReins Configuration — Hermes Blog (static site)
+# Minimal guard set: no build/test/lint — static HTML/CSS/JS site.
+# Secrets guard only: blocks API keys, tokens, and passwords.
+
+guards:
+  test_mode: "full"
+  secrets: true
+  lint: false
+  tests: false
+
+evaluator:
+  max_iterations: 25
+  max_time: "5m"
+  max_input_tokens: "100k"
+  max_output_tokens: "200k"
+  tool_call_weight: 0.1
+
+# Python defaults — for scripts/generate-manifest.py
+defaults:
+  model: deepseek-v4-flash
+  max_iterations: 100
+  check_for_updates: true
+  update_check_ttl: "24h"
