@@ -524,13 +524,33 @@ main {
   border-collapse: collapse;
   margin: 1.5rem 0;
   font-size: 0.9rem;
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
+.article-content table::-webkit-scrollbar { height: 4px; }
+.article-content table::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 2px; }
 .article-content th, .article-content td {
   padding: 0.6rem 1rem;
   border: 1px solid var(--border);
   text-align: left;
+  white-space: nowrap;
 }
-.article-content th { background: var(--code-bg); font-weight: 600; }
+.article-content td { white-space: normal; min-width: 100px; }
+.article-content th { background: var(--code-bg); font-weight: 600; white-space: nowrap; }
+.article-content tr:nth-child(even) td { background: var(--bg-alt); }
+
+/* ---- Mermaid diagrams ---- */
+.article-content .mermaid {
+  margin: 2rem 0;
+  padding: 1.25rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  text-align: center;
+}
+.article-content .mermaid svg { max-width: 100%; height: auto; }
 
 /* ==========================================================================
    TAGS PAGE

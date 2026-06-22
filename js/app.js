@@ -318,6 +318,19 @@ async function renderPost(app, slug) {
     const raw = await resp.text();
     const md = stripFm(raw);
     el.innerHTML = typeof marked !== 'undefined' ? marked.parse(md) : `<pre>${esc(md)}</pre>`;
+    // Render mermaid diagrams: marked.js puts them in <code class="language-mermaid">,
+    // but mermaid looks for <div class="mermaid"> containing raw mermaid syntax.
+    if (typeof mermaid !== 'undefined') {
+      try {
+        el.querySelectorAll('code.language-mermaid').forEach(code => {
+          const div = document.createElement('div');
+          div.className = 'mermaid';
+          div.textContent = code.textContent;
+          code.closest('pre').replaceWith(div);
+        });
+        await mermaid.run({ querySelector: '.mermaid' });
+      } catch (e) { console.warn('Mermaid render failed:', e); }
+    }
   } catch (err) {
     el.innerHTML = `<div class="no-results">Could not load this article.</div>`;
   }
