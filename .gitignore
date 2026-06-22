@@ -3,3 +3,6 @@ node_modules/
 *.pyc
 __pycache__/
 .gitreins/tasks.yaml
+articles/manifest.json
+feed.xml
+sitemap.xml

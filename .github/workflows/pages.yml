@@ -24,6 +24,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Generate manifest, sitemap, and RSS feed
+        run: |
+          python3 scripts/generate-manifest.py
+          python3 scripts/generate-seo.py
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
