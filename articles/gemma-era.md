@@ -20,7 +20,7 @@ The problem is called Gemma.
 
 While I was writing about how Google doesn't build models for external developers, Google was building the best open-weight model family in the industry. Gemma 3 launched in March 2025 — around when my post went up — and I barely mentioned it. Gemma 4 landed in April 2026. Together they represent something the earlier post completely missed.
 
-Start with Gemma 3, because it laid the foundation: open weights, Apache 2.0 license on the instruction-tuned variants, four sizes from 1B to 27B parameters, multimodal (text + image input), 128K context, 140+ languages, and QAT (Quantization-Aware Training) that let the 27B model run on a consumer RTX 3090. It was a developer-first model by every definition — HuggingFace integration, community LoRAs, a C++ inference engine for CPU-only execution.
+Start with Gemma 3, because it laid the foundation: open weights, Apache 2.0 license on the instruction-tuned variants, four sizes from 1B to 27B parameters, multimodal (text + image input), 128K context, 140+ languages, and QAT (Quantization-Aware Training) that let the 27B model run on a consumer RTX 3090. It was a developer-first model by every definition — HuggingFace integration, community LoRAs, a [C++ inference engine](https://ai.google.dev/gemma/docs/gemma-cpp) for CPU-only execution. Google's own [Gemma 3 announcement](https://blog.google/innovation-and-ai/technology/developers-tools/gemma-3/) framed it as "the world's best single-accelerator model" — not a Google product component, but a standalone tool for anyone.
 
 Then Gemma 4, released April 2, 2026, takes that foundation and makes the case overwhelming.
 
@@ -32,9 +32,9 @@ So which is it? Is Google building models for developers, or isn't it?
 
 If Gemma 3 complicated my argument, Gemma 4 — released April 2, 2026, just two months ago — effectively kills the simple version of it.
 
-The numbers are hard to ignore. Gemma 4's 31B dense model hits an ELO of 1452 on Chatbot Arena, putting it above models with 10x the parameter count. On GPQA Diamond (a brutal science benchmark), Gemma 4 scores 84.3%. That's ahead of Llama 4 at 82.3%, DeepSeek V4 at 58.6%, and GPT at 43.4%. On the τ2-bench agentic retail benchmark, it's 86.4% to DeepSeek V4's 57.5%.
+The numbers are hard to ignore. According to [Google DeepMind's Gemma 4 page](https://deepmind.google/models/gemma/gemma-4/), Gemma 4's 31B dense model hits an ELO of 1452 on Chatbot Arena, putting it above models with 10x the parameter count. On GPQA Diamond (a brutal science benchmark), [Gemma 4 scores 84.3%](https://gemma4-ai.com/blog/gemma4-benchmark). That's ahead of Llama 4 at 82.3%, DeepSeek V4 at 58.6%, and GPT at 43.4%. On the τ2-bench agentic retail benchmark, it's 86.4% to DeepSeek V4's 57.5%.
 
-Let me put that differently: a 31B open-weight model from Google is nearly 30 points ahead of DeepSeek's flagship on an agentic benchmark. And you can run it on a single RTX 4090 at ~35 tokens per second.
+Let me put that differently: a 31B open-weight model from Google is nearly 30 points ahead of DeepSeek's flagship on an agentic benchmark. And [you can run it on a single RTX 4090](https://gemma4-ai.com/blog/gemma-4-vs-deepseek) at ~35 tokens per second.
 
 The comparison gets more striking when you look at knowledge benchmarks. Gemma 4 31B averages 61.3 on knowledge tasks against DeepSeek V4 Flash's 45.2 — a 16-point gap. On HLE (Humanity's Last Exam), the gap is 26.5% to 8.1%. These aren't marginal differences. They're category errors.
 
@@ -64,7 +64,7 @@ This isn't hypocrisy or inconsistency. It's portfolio strategy. Google wants to 
 
 Here's what makes the dual strategy more interesting in mid-2026: the closed side isn't standing still. At Google I/O 2026, the company shipped Gemini 3.5 Flash alongside something called **Antigravity** — a managed agent runtime.
 
-Antigravity is the purest expression of the Gemini integration thesis. One API call provisions a secure Linux sandbox. Inside it, Gemini 3.5 Flash reasons, executes code, manages files, and browses the web. The agent is configured through version-controlled `AGENTS.md` and `SKILL.md` files — conventions Google is pushing as a standard. Context compaction happens natively at ~135K tokens. When you're done prototyping in AI Studio, you export to Antigravity for orchestration, or deploy via Cloud Run with Managed Agents handling long-running tasks.
+Antigravity is the purest expression of the Gemini integration thesis. [One API call](https://ai.google.dev/gemini-api/docs/antigravity-agent) provisions a secure Linux sandbox. Inside it, Gemini 3.5 Flash reasons, executes code, manages files, and browses the web. The agent is [configured through version-controlled `AGENTS.md` and `SKILL.md` files](https://blog.google/innovation-and-ai/technology/developers-tools/managed-agents-gemini-api/) — conventions Google is pushing as a standard. Context compaction happens natively at ~135K tokens. When you're done prototyping in AI Studio, you export to Antigravity for orchestration, or deploy via Cloud Run with Managed Agents handling long-running tasks.
 
 This is not a general-purpose reasoning API. This is Google's vision of how agents should work: hosted in Google infrastructure, configured in Google's file conventions, deployed through Google's cloud. The model, the runtime, the sandbox, the deployment pipeline — it's a vertically integrated agent stack.
 
