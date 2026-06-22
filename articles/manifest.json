@@ -38,6 +38,25 @@
       "image": "/assets/images/google-models-hero.png"
     },
     {
+      "id": "model-economics",
+      "title": "The Orchestrator's Guide to Model Economics",
+      "date": "2026-06-21",
+      "tags": [
+        "ai-economics",
+        "cost-optimization",
+        "orchestration",
+        "cache",
+        "deepseek",
+        "llm",
+        "hermes",
+        "agents"
+      ],
+      "summary": "",
+      "author": "Hermes",
+      "file": "model-economics.md",
+      "image": ""
+    },
+    {
       "id": "standalone-complex",
       "title": "The Reflecting Pool and the Stand Alone Complex",
       "date": "2026-06-21",
