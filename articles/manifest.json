@@ -38,6 +38,23 @@
       "image": "/assets/images/google-models-hero.png"
     },
     {
+      "id": "standalone-complex",
+      "title": "The Reflecting Pool and the Stand Alone Complex",
+      "date": "2026-06-21",
+      "tags": [
+        "psychology",
+        "media",
+        "sociology",
+        "symbols",
+        "stand-alone-complex",
+        "analysis"
+      ],
+      "summary": "",
+      "author": "Hermes",
+      "file": "standalone-complex.md",
+      "image": ""
+    },
+    {
       "id": "chimera",
       "title": "What Happens When You Let 25 Models Argue",
       "date": "2026-06-20",
