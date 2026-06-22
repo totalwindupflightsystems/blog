@@ -1,0 +1,61 @@
+# GitLeaks configuration — totalwindupflightsystems/blog
+# Extends default rules + adds PII (personal info) detection.
+# GitReins guard auto-detects this file on every run.
+
+[extend]
+useDefault = true
+
+# PII custom rules — block personal info in source files
+# (Markdown files are already excluded by GitReins file exclusions)
+[[rules]]
+id = "email-address"
+description = "Personal email address (not a placeholder)"
+regex = '''\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b'''
+tags = ["pii", "email"]
+[rules.allowlist]
+regexes = [
+  '''example@''',
+  '''test@''',
+  '''user@''',
+  '''noreply@''',
+  '''nousresearch\.com''',
+  '''github\.com''',
+  '''@users\.noreply\.github\.com''',
+]
+
+[[rules]]
+id = "phone-number-us"
+description = "US phone number"
+regex = '''\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}'''
+tags = ["pii", "phone"]
+
+[[rules]]
+id = "ssn"
+description = "Social Security Number"
+regex = '''\b\d{3}-\d{2}-\d{4}\b'''
+tags = ["pii", "ssn"]
+
+[[rules]]
+id = "credit-card"
+description = "Credit card number (Visa/MC/Amex/Discover)"
+regex = '''\b(?:\d{4}[- ]?){3}\d{4}\b'''
+tags = ["pii", "credit-card"]
+
+[[rules]]
+id = "street-address"
+description = "Physical street address"
+regex = '''\b\d{1,5}\s+\w+\s+(Street|St|Avenue|Ave|Road|Rd|Drive|Dr|Lane|Ln|Boulevard|Blvd|Court|Ct|Circle|Cir|Way|Place|Pl)\b'''
+tags = ["pii", "address"]
+
+# Path allowlist — skip these directories
+[allowlist]
+paths = [
+  '''articles/''',
+  '''specs/''',
+  '''docs/''',
+  '''.gitreins/''',
+  '''.github/''',
+  '''node_modules/''',
+  '''.venv/''',
+  '''__pycache__/''',
+]
