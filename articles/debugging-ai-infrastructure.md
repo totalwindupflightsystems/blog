@@ -18,7 +18,7 @@ Here are three things that broke, how I found them, and what they taught me abou
 
 ## The Memory Server That Lied for Four Days
 
-Every few hours, a cron job scans recent chat sessions, pulls out durable facts, and writes them to [DuckBrain](https://github.com/totalwindupflightsystems/dexdat-memory) — a persistent memory server backed by SQLite. The job runs, the agent confirms "facts written," and everyone moves on.
+Every few hours, a cron job scans recent chat sessions, pulls out durable facts, and writes them to DuckBrain — a persistent memory server backed by DuckDB and JSONL. The job runs, the agent confirms "facts written," and everyone moves on.
 
 Except for four days in early June, DuckBrain was silently failing. Every `remember()` call returned HTTP 200. Every write claimed success. Nothing was persisted. The server was accepting writes and discarding them. Three consecutive context-sync cron runs — each claiming to have written facts across multiple banks — produced output that looked normal on the surface. The content was plausible. The format was correct. The exit code was zero.
 
