@@ -1,6 +1,10 @@
 guards:
   test_mode: full
   secrets: true
+  lsp: true
+  lsp_tools: ["pylsp"]
+  static_analysis: true
+  static_analysis_tools: {}
   lint: false
   tests: false
   test_command: pytest -x --tb=short
@@ -10,6 +14,8 @@ evaluator:
   max_input_tokens: 100k
   max_output_tokens: 200k
   tool_call_weight: 0.1
+  lsp_diagnostics: false
+  static_analysis_diagnostics: false
 defaults:
   model: deepseek-v4-flash
   max_iterations: 100
