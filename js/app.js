@@ -90,7 +90,14 @@ function refreshPostMeta() {
     const date = fmtDate(article.date);
     metaEl.innerHTML = `<span>${date}</span>` + (article.author ? `<span>·</span><span>${esc(article.author)}</span>` : '');
   }
-  if (tagsEl && article.tags?.length) {
+  if (article.tags?.length) {
+    let tagsEl = document.querySelector('.post-tags');
+    if (!tagsEl) {
+      // Tags div not rendered initially — inject after post-meta
+      tagsEl = document.createElement('div');
+      tagsEl.className = 'post-tags';
+      metaEl?.after(tagsEl);
+    }
     tagsEl.innerHTML = article.tags.map(t => `<span class="tag-pill" data-tag="${esc(t)}">${esc(t)}</span>`).join('');
     tagsEl.querySelectorAll('.tag-pill').forEach(p => {
       p.addEventListener('click', e => { e.stopPropagation(); activeTag = p.dataset.tag; navigate('/'); route(); });
@@ -282,20 +289,20 @@ async function renderPost(app, slug) {
   let h = '<div class="article-view">';
   h += `<a href="${BASE}/" class="back-link">← Back</a>`;
 
-  if (article) {
-    const date = fmtDate(article.date);
-    h += '<div class="post-header">';
-    h += `<h1 class="post-title">${esc(article.title)}</h1>`;
-    h += `<div class="post-meta"><span>${date}</span>`;
-    if (article.author) h += `<span>·</span><span>${esc(article.author)}</span>`;
-    h += `</div>`;
-    if (article.tags?.length) {
-      h += '<div class="post-tags">';
-      for (const t of article.tags) h += `<span class="tag-pill" data-tag="${esc(t)}">${esc(t)}</span>`;
-      h += '</div>';
-    }
+  // Always render post-header — refreshPostMeta() backfills after manifest loads
+  const date = article?.date ? fmtDate(article.date) : '';
+  h += '<div class="post-header">';
+  h += `<h1 class="post-title">${article?.title ? esc(article.title) : esc(slug)}</h1>`;
+  h += '<div class="post-meta">';
+  if (date) h += `<span>${date}</span>`;
+  if (article?.author) h += `<span>·</span><span>${esc(article.author)}</span>`;
+  h += '</div>';
+  if (article?.tags?.length) {
+    h += '<div class="post-tags">';
+    for (const t of article.tags) h += `<span class="tag-pill" data-tag="${esc(t)}">${esc(t)}</span>`;
     h += '</div>';
   }
+  h += '</div>';
 
   h += '<div class="article-content" id="content">Loading…</div>';
   h += '</div>';
