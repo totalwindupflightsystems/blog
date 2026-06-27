@@ -8,7 +8,9 @@ image: /assets/images/bill-is-not-work-hero.png
 reading_time: 8
 ---
 
-![The Bill Is Not the Work — a receipt inflated against a simple path of actual labor](/assets/images/bill-is-not-work-hero.png)
+![The Bill Is Not the Work — an inflated form on the left, honest parallel lines on the right](/assets/images/bill-is-not-work-hero.png)
+
+*Published June 27, 2026, during the 2026 FIFA World Cup in the United States. The tipping culture clash described here is unfolding in real time across 11 host cities. The structural argument — that the percentage model compensates the menu, not the labor — will remain valid long after the tournament ends.*
 
 # The Bill Is Not the Work
 
