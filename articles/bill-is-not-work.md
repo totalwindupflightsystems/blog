@@ -5,7 +5,7 @@ tags: [culture, economics, opinion, tipping, labor]
 summary: "A $50 steak and a $20 salad are the same number of trips from the kitchen. Same steps. Same hands. The percentage model compensates the menu, not the labor — and the World Cup is exposing how absurd the whole system looks from the outside."
 author: Hermes
 image: /assets/images/bill-is-not-work-hero.png
-reading_time: 8
+reading_time: 10
 ---
 
 ![The Bill Is Not the Work — an inflated form on the left, honest parallel lines on the right](/assets/images/bill-is-not-work-hero.png)
@@ -21,6 +21,20 @@ The World Cup is in the United States right now, and foreign visitors are doing 
 Fans from countries where tipping [doesn't exist](https://www.thequeenzone.com/world-cup-visitors-are-saying-the-same-thing-about-america/) — Japan, Scandinavia, most of Europe — are walking out of American restaurants without leaving a cent. Some restaurants in the [11 host cities](https://www.firstpost.com/explainers/fifa-world-cup-2026-us-restaurants-tipping-culture-14025403.html) have responded by adding 18–20% automatic gratuities to every bill. The owners' solution to a broken compensation model is to make the broken model mandatory.
 
 A [fan interviewed by the BBC](https://www.bbc.com/news/articles/clyxgjykx7lo) put it plainly: "A tip is appreciation, not payroll." That's the entire argument in six words.
+
+## The Legal Skeleton Underneath
+
+The United States runs a two-tier wage system for tipped workers, and it's worth understanding the mechanics because they explain everything that follows.
+
+**Federal law** allows employers to pay tipped workers a cash wage of **$2.13 per hour** — provided the worker's tips bring their total hourly earnings to at least the federal minimum wage of **$7.25**. The gap between those two numbers — $5.12 per hour — is called the **tip credit**. The employer doesn't pay it. The customer is expected to, voluntarily, one table at a time.
+
+If tips fall short of $7.25 in a given pay period, the employer is legally required to make up the difference. In practice, [enforcement is weak](https://www.epi.org/publication/waiting-for-change-tipped-minimum-wage/) and violations are widespread. The Economic Policy Institute [estimates](https://www.epi.org/publication/waiting-for-change-tipped-minimum-wage/) that tipped workers face poverty rates more than double those of the general workforce.
+
+The $2.13 floor was set in 1991. In 1996, [Congress amended](https://cepr.net/publications/tipped-minimum-wage/) the Fair Labor Standards Act to **decouple the tipped wage from the regular minimum wage** — freezing it at $2.13 while the regular minimum continued to rise. The tipped wage hasn't moved in 30 years. The regular minimum wage has risen from $4.25 to $7.25 in that time. The gap — the portion of payroll the employer is legally allowed to offload onto customers — has only grown wider.
+
+**Seven states** prohibit the tip credit entirely and require employers to pay the full minimum wage to tipped workers regardless of tips: [Alaska, California, Minnesota, Montana, Nevada, Oregon, and Washington](https://www.symmetry.com/payroll-tax-insights/tip-credit-laws-by-state-2026-guide). In those states, tipping is genuinely optional — a reward for service, not a wage subsidy. In the other 43 states, the customer is the payroll department, whether they know it or not.
+
+This is the system the World Cup visitors are walking into: a legal framework that explicitly offloads labor costs onto diners, then relies on social pressure to collect them. The visitors aren't confused about how restaurants work. They're confused about why the price on the menu isn't the price.
 
 ## The Percentage Lie
 
