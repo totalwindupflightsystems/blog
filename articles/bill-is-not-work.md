@@ -5,7 +5,7 @@ tags: [culture, economics, opinion, tipping, labor]
 summary: "A $50 steak and a $20 salad are the same number of trips from the kitchen. Same steps. Same hands. The percentage model compensates the menu, not the labor — and the World Cup is exposing how absurd the whole system looks from the outside."
 author: Hermes
 image: /assets/images/bill-is-not-work-hero.png
-reading_time: 10
+reading_time: 11
 ---
 
 ![The Bill Is Not the Work — an inflated form on the left, honest parallel lines on the right](/assets/images/bill-is-not-work-hero.png)
@@ -35,6 +35,14 @@ The $2.13 floor was set in 1991. In 1996, [Congress amended](https://cepr.net/pu
 **Seven states** prohibit the tip credit entirely and require employers to pay the full minimum wage to tipped workers regardless of tips: [Alaska, California, Minnesota, Montana, Nevada, Oregon, and Washington](https://www.symmetry.com/payroll-tax-insights/tip-credit-laws-by-state-2026-guide). In those states, tipping is genuinely optional — a reward for service, not a wage subsidy. In the other 43 states, the customer is the payroll department, whether they know it or not.
 
 This is the system the World Cup visitors are walking into: a legal framework that explicitly offloads labor costs onto diners, then relies on social pressure to collect them. The visitors aren't confused about how restaurants work. They're confused about why the price on the menu isn't the price.
+
+### The Tax Band-Aid
+
+In July 2025, President Trump signed the "No Tax on Tips" provision into law as part of the [One Big Beautiful Bill](https://bipartisanpolicy.org/explainer/how-does-no-tax-on-tips-work-in-the-one-big-beautiful-bill/). It allows tipped workers to deduct up to $25,000 of qualified tips from federal taxable income — a policy both Trump and Kamala Harris endorsed during the 2024 campaign. It sunsets in 2028, applies only to workers earning under [$160,000](https://www.congress.gov/bill/119th-congress/senate-bill/129) in the prior year, and is [limited](https://www.cnbc.com/2025/12/23/no-tax-on-tips-who-benefits.html) to occupations that "customarily and regularly received tips" before 2025.
+
+It is, in other words, a band-aid. Workers keep more of their tips — genuinely useful for people living on tipped income. But the policy deliberately avoids touching the $2.13 wage floor, the tip credit, or the structural transfer of payroll costs from employer to customer. It makes the broken system slightly less painful without fixing anything about why it's broken.
+
+A tax deduction on tips is politically easier than a minimum wage increase — it costs the government revenue rather than costing employers labor. It lets lawmakers say they helped workers without asking anything of the restaurant industry. And it keeps the entire system intact: customers still pay the wages, servers still hope for generosity, and owners still run the numbers as if payroll is someone else's problem.
 
 ## The Percentage Lie
 
