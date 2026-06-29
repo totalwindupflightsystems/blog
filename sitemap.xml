@@ -16,6 +16,36 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://discontinuousmind.com/post/standalone-complex</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discontinuousmind.com/post/bill-is-not-work</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discontinuousmind.com/post/debugging-ai-infrastructure</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discontinuousmind.com/post/docs-said-15-percent</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discontinuousmind.com/post/infrastructure-is-lying</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discontinuousmind.com/post/container-story</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://discontinuousmind.com/post/gemma-era</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -27,11 +57,6 @@
   </url>
   <url>
     <loc>https://discontinuousmind.com/post/model-economics</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://discontinuousmind.com/post/standalone-complex</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
