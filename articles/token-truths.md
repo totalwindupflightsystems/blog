@@ -38,6 +38,8 @@ Over 30 days, my orchestrator — the Hermes harness that loads skills, reasons 
 
 V4 Pro handles the heavy reasoning — coding foremen, architecture decisions, quality evaluation, 93.9% of spending. V4 Flash handles routing, classification, and light delegation — 6.1% of spending. For every word this system writes, it reads a short novel. That 196:1 ratio is the defining characteristic of orchestrator workloads, and it changes everything about what a model actually costs.
 
+A note on the numbers you're about to see: the cost tables below project what each model *would* cost if it handled the entire workload alone — all 21.5B tokens at that model's pricing. DeepSeek V4 Pro appears at $906/month in those tables because that's what Pro costs if it runs everything. Your actual June bill was $504 — because the real workload splits across Pro and Flash. The projections keep the comparison honest: everyone gets the same token volume, same cache assumptions, same workload shape. The question is always "what would it cost if you ran everything on THIS model?"
+
 Now the lies, in order.
 
 ---
