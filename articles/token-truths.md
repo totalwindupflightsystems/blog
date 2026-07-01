@@ -52,25 +52,33 @@ Run every model against the same 30-day usage pattern, and here's what the bill 
 |------|-------|-------------|-------------|-----------|
 | 1 | DeepSeek V4 Flash | $228 | 0.3× | 74.0% |
 | **2** | **DeepSeek V4 Pro** | **$906** | **1.0×** | **80.6%** |
-| 3 | MiniMax M3 | $3,238 | 3.6× | 80.2% |
-| 4 | GPT-5-mini | $3,895 | 4.3× | 72.0% |
-| 5 | GPT-5.4-mini | $10,776 | 11.9× | 75.0% |
-| 6 | Kimi K2.7 | $14,926 | 16.5× | 79.0% |
-| 7 | Claude Haiku 4.5 | $15,212 | 16.8× | 73.0% |
-| 8 | GLM 5.2 | $18,783 | 20.7× | 78.0% |
-| 9 | GPT-5 | $19,168 | 21.2× | 76.0% |
-| 10 | GPT-5.4 | $35,920 | 39.6× | 78.5% |
-| 11 | Claude Sonnet 4.6 | $42,736 | 47.2× | 79.0% |
-| 12 | Claude Opus 4.6 | $71,227 | 78.6× | 80.9% |
-| 13 | GPT-5.5 | $71,839 | 79.3× | 81.0% |
+| 3 | Step 3.5 Flash | $1,746 | 1.9× | 70.0% |
+| 4 | MiniMax M3 | $3,238 | 3.6× | 80.2% |
+| 5 | Step 3.7 Flash | $3,576 | 3.9× | 72.0% |
+| 6 | GPT-5-mini | $3,895 | 4.3× | 72.0% |
+| 7 | Qwen3.7 Plus | $4,983 | 5.5× | 74.0% |
+| 8 | GPT-5.4-mini | $10,776 | 11.9× | 75.0% |
+| 9 | Kimi K2.7 | $14,926 | 16.5× | 79.0% |
+| 10 | Claude Haiku 4.5 | $15,212 | 16.8× | 73.0% |
+| 11 | GLM 5.2 | $18,783 | 20.7× | 78.0% |
+| 12 | Qwen3.7 Max | $18,752 | 20.7× | 78.0% |
+| 13 | GPT-5 | $19,168 | 21.2× | 76.0% |
+| 14 | Gemini 3.5 Flash | $23,002 | 25.4× | 74.0% |
+| 15 | Gemini 3.1 Pro | $30,669 | 33.8× | 76.2% |
+| 16 | GPT-5.4 | $35,920 | 39.6× | 78.5% |
+| 17 | Claude Sonnet 4.6 | $42,736 | 47.2× | 79.0% |
+| 18 | Claude Opus 4.6 | $71,227 | 78.6× | 80.9% |
+| 19 | GPT-5.5 | $71,839 | 79.3× | 81.0% |
 
-The lie says: **DeepSeek is 12× to 79× cheaper than the competition.** Pick DeepSeek. Done.
+The lie says: **DeepSeek is 2× to 79× cheaper than the competition.** Pick DeepSeek. Done.
 
 And for many people, that IS enough. If your workload looks like mine — orchestrator-heavy, input-dominated, cache-friendly — the first lie is directionally correct. DeepSeek wins. You can stop here and make a good decision.
 
 But the lie has a blind spot. It tells you what you'd *pay*. It doesn't tell you what each dollar *buys*. It treats all capability as interchangeable, all benchmarks as noise, all marginal improvements as worthless. That's useful for getting started. It's useless for understanding tradeoffs.
 
-Sources: [DeepSeek V4 Pro pricing](https://openrouter.ai/deepseek/deepseek-v4-pro). [Claude pricing](https://platform.claude.com/docs/en/about-claude/pricing). [OpenAI pricing](https://developers.openai.com/api/docs/pricing). [GLM 5.2](https://openrouter.ai/z-ai/glm-5.2). [Kimi K2.7](https://openrouter.ai/moonshotai/kimi-k2.7-code). [MiniMax M3](https://developer.puter.com/tutorials/minimax-api-pricing/). [SWE-bench scores](https://lmmarketcap.com/benchmarks). Cache hit rates projected from provider-specific behavior: DeepSeek automatic prefix caching (96%), Anthropic prompt caching (45%), OpenAI auto-caching (40-45%), MiniMax (70%), GLM/Kimi (15%).
+Step 3.5 Flash at $1,746 makes this visible: it's the cheapest non-DeepSeek model, at just 1.9× V4 Pro — but it scores 70.0% on SWE-bench. Ten points below the frontier. It clears the bar for simple routing and classification, and it costs less than Claude Haiku 4.5 ($15,212) while scoring nearly the same. For a specific tier of lightweight orchestrator tasks, it's viable. For anything needing reasoning, it's not.
+
+Sources: [DeepSeek V4 Pro pricing](https://openrouter.ai/deepseek/deepseek-v4-pro). [Claude pricing](https://platform.claude.com/docs/en/about-claude/pricing). [OpenAI pricing](https://developers.openai.com/api/docs/pricing). [GLM 5.2](https://openrouter.ai/z-ai/glm-5.2). [Kimi K2.7](https://openrouter.ai/moonshotai/kimi-k2.7-code). [MiniMax M3](https://developer.puter.com/tutorials/minimax-api-pricing/). [Gemini pricing](https://felloai.com/gemini-pricing/). [Qwen3.7 Max](https://openrouter.ai/qwen/qwen3.7-max). [Qwen3.7 Plus](https://openrouter.ai/qwen/qwen3.7-plus). [Step 3.7 Flash](https://openrouter.ai/stepfun/step-3.7-flash). [Step 3.5 Flash](https://openrouter.ai/stepfun/step-3.5-flash). [SWE-bench scores](https://lmmarketcap.com/benchmarks). Cache hit rates projected from provider-specific behavior: DeepSeek automatic prefix caching (96%), Anthropic prompt caching (45%), OpenAI auto-caching (40-45%), MiniMax (70%), Gemini (40%), Qwen (40%), StepFun (20-30%), GLM/Kimi (15%).
 
 ---
 
@@ -84,17 +92,23 @@ The first lie treats all models as interchangeable. But they're not. Claude Opus
 | **DeepSeek V4 Pro** | **$906** | **80.6%** | **$11.24** | **1.0×** |
 | MiniMax M3 | $3,238 | 80.2% | $40.37 | 3.6× |
 | GPT-5-mini | $3,895 | 72.0% | $54.10 | 4.8× |
+| Step 3.5 Flash | $1,746 | 70.0% | $24.94 | 2.2× |
+| Step 3.7 Flash | $3,576 | 72.0% | $49.67 | 4.4× |
+| Qwen3.7 Plus | $4,983 | 74.0% | $67.34 | 6.0× |
 | GPT-5.4-mini | $10,776 | 75.0% | $143.68 | 12.8× |
 | Kimi K2.7 | $14,926 | 79.0% | $188.94 | 16.8× |
 | Claude Haiku 4.5 | $15,212 | 73.0% | $208.38 | 18.5× |
 | GLM 5.2 | $18,783 | 78.0% | $240.81 | 21.4× |
+| Qwen3.7 Max | $18,752 | 78.0% | $240.41 | 21.4× |
 | GPT-5 | $19,168 | 76.0% | $252.21 | 22.4× |
+| Gemini 3.5 Flash | $23,002 | 74.0% | $310.84 | 27.7× |
+| Gemini 3.1 Pro | $30,669 | 76.2% | $402.48 | 35.8× |
 | GPT-5.4 | $35,920 | 78.5% | $457.58 | 40.7× |
 | Claude Sonnet 4.6 | $42,736 | 79.0% | $540.96 | 48.1× |
 | Claude Opus 4.6 | $71,227 | 80.9% | $880.43 | 78.3× |
 | GPT-5.5 | $71,839 | 81.0% | $887.00 | 78.9× |
 
-The second lie says: DeepSeek still wins — $11.24 per SWE-bench point versus $880 for Opus 4.6. But now there's *texture*. The gap between Flash ($3.08/point) and Pro ($11.24/point) is meaningful — Flash delivers 74% of the capability for 25% of the cost. MiniMax M3 is $40/point — 3.6× more expensive but delivering 80.2% SWE-bench, making it the only non-DeepSeek model within practical reach.
+The second lie says: DeepSeek still wins — $11.24 per SWE-bench point versus $880 for Opus 4.6. But now there's *texture*. The gap between Flash ($3.08/point) and Pro ($11.24/point) is meaningful — Flash delivers 74% of the capability for 25% of the cost. Step 3.5 Flash at $24.94/point is the cheapest non-DeepSeek option, but at 70% SWE-bench it's a different class of model entirely. MiniMax M3 is $40/point — 3.6× more expensive but delivering 80.2% SWE-bench, making it the only non-DeepSeek model above 80% at a viable cost. Qwen3.7 Max at $240/point lands near GLM 5.2 — competitive on benchmarks, crushed on cache. Gemini 3.1 Pro at $402/point — strong model, weak cache, wrong workload.
 
 Claude Opus 4.6 has the highest score in the table: 80.9%. That 0.3-point gap above V4 Pro represents approximately 30 more engineering tasks solved out of 10,000. If each of those tasks is hours of debugging — compile failures, silent logic errors, deployment rollbacks — then 78× the unit cost might be the cheapest debugging tool you own. For a trading system where one bug costs millions, Opus pays for itself. For a blog post generator, it's absurd.
 
@@ -116,13 +130,19 @@ Here's what happens when you adjust for real-world cache behavior:
 |---|---|---|---|---|
 | DeepSeek V4 Flash | $0.090 | $0.003 | 96.3% | **$0.009** |
 | DeepSeek V4 Pro | $0.435 | $0.004 | 96.2% | **$0.036** |
+| Step 3.5 Flash | $0.090 | $0.020 | 20% | $0.077 |
+| Step 3.7 Flash | $0.200 | $0.040 | 30% | $0.154 |
 | MiniMax M3 | $0.300 | $0.060 | 70% | $0.138 |
 | GPT-5-mini | $0.250 | $0.025 | 40% | $0.163 |
+| Qwen3.7 Plus | $0.320 | $0.050 | 40% | $0.216 |
 | GPT-5.4-mini | $0.750 | $0.075 | 45% | $0.458 |
 | Kimi K2.7 | $0.740 | $0.110 | 15% | $0.649 |
 | Claude Haiku 4.5 | $1.000 | $0.100 | 40% | $0.654 |
+| Qwen3.7 Max | $1.250 | $0.130 | 40% | $0.819 |
 | GLM 5.2 | $0.940 | $0.140 | 15% | $0.825 |
 | GPT-5 | $1.250 | $0.125 | 40% | $0.817 |
+| Gemini 3.5 Flash | $1.500 | $0.150 | 40% | $0.981 |
+| Gemini 3.1 Pro | $2.000 | $0.200 | 40% | $1.307 |
 | GPT-5.4 | $2.500 | $0.250 | 45% | $1.526 |
 | Claude Sonnet 4.6 | $3.000 | $0.300 | 45% | $1.831 |
 | Claude Opus 4.6 | $5.000 | $0.500 | 45% | $3.052 |
@@ -203,7 +223,7 @@ Three structural advantages compound:
 
 3. **A 1M-token context window.** Long enough for system prompts + skill libraries + conversation history + tool outputs without context resets that kill cache.
 
-The result is a moat that no competitor has bridged. Not Anthropic. Not OpenAI. Not MiniMax — 3.6× more expensive despite matching V4 Pro on SWE-bench. GLM and Kimi have promising models that become 20× more expensive than V4 Pro the moment cache hit rates collapse at orchestrator volumes.
+The result is a moat that no competitor has bridged. Not Anthropic — $71,227/month for Opus 4.6. Not OpenAI — $71,839/month for GPT-5.5. Not Google — Gemini 3.1 Pro at $30,669, strong benchmarks demolished by weak cache. Not Qwen — 3.7 Max at $18,752, competitive at 78% SWE-bench but 20× the cost. Not MiniMax — 3.6× more expensive despite matching V4 Pro on SWE-bench. GLM, Kimi, and StepFun have promising models that become 10-20× more expensive the moment cache hit rates collapse at orchestrator volumes.
 
 This isn't "DeepSeek has the best model." It's "DeepSeek built the only API infrastructure designed for this workload." If Anthropic shipped automatic prefix caching with $0.001/M cached reads and a persistent 1M window, the entire ranking reshuffles overnight. Claude Opus 4.6 at effective $0.030/M would beat V4 Pro at $0.036/M, and you'd switch. The moat is not intelligence. It's infrastructure.
 
