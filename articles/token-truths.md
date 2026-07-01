@@ -168,20 +168,22 @@ Every $0.001 difference in cached input price is worth $258/month at this volume
 
 ## The Fourth Lie: Thinking-Token Efficiency
 
-The third lie treats all tokens as equal work. They're not. Some tokens are reasoning. Some are loading. Some are output. Some are thinking — internal chains that consume budget before the model speaks.
+The third lie treats all tokens as equal work. They're not. Some tokens are reasoning. Some are loading. Some are output. And some are thinking — hidden reasoning chains that the model generates before it delivers the answer you actually read.
 
-DeepSeek V4 Pro uses reasoning tokens. These thinking chains aren't separately billed (they're part of input pricing), but they change what each dollar actually produces. If Pro spends 40% of its input on internal reasoning that Flash doesn't do:
+DeepSeek V4 Pro uses reasoning tokens — chain-of-thought that gets returned in the API response alongside the final answer. These tokens are billed at **output rates** ($0.87/M), not input rates. You pay for them, but you don't see them unless you look at the raw API response. And a significant portion of every Pro request is thinking you never read.
 
-| Model | Monthly | Thinking | Useful Tokens/Day | Effective $/M |
-|---|---|---|---|---|
-| DeepSeek V4 Flash | $228 | ~5% | 700M | ~$0.010 |
-| DeepSeek V4 Pro | $906 | ~40% | 442M | ~$0.060 |
+Your June billing data makes this concrete: V4 Pro generated 98.6M output tokens at $0.87/M — about $85.78 in output charges. V4 Flash generated 23.9M output tokens at $0.18/M — about $4.30. Already a 20× gap in output spending. But if Pro spends ~40% of its output on hidden reasoning chains:
 
-Flash delivers 700M useful reasoning tokens per day at $0.010/effective-M. Pro delivers 442M at $0.060/effective-M. **On useful-reasoning-per-dollar, Flash is 6× more efficient than Pro.**
+| Model | Monthly | Output $ | Thinking % | Visible Output/Day | Visible $/M |
+|---|---|---|---|---|---|
+| DeepSeek V4 Flash | $228 | $4.30 | ~5% | 757K | ~$0.19 |
+| DeepSeek V4 Pro | $906 | $85.78 | ~40% | 1,972K | ~$1.45 |
 
-This reopens a question the third lie seemed to settle. If Flash is 6× more efficient per useful token, why use Pro at all? The answer is that *usefulness isn't uniform*. A thinking token spent debugging a memory leak is more valuable than a thinking token spent deciding which skill to load next. Pro's reasoning chains are longer because the tasks require them. The cost isn't waste — it's investment.
+Flash delivers 757K visible output tokens per day at $0.19/effective-M for visible output. Pro delivers 1,972K at $1.45/effective-M. **On visible-output-per-dollar, Flash is 7-8× more efficient.** The hidden reasoning chains that make Pro smarter also make it dramatically more expensive per word you actually read.
 
-But the proportion matters. If 40% of Pro's input is reasoning that's unnecessary for routing and classification — the tasks Flash already handles — then some fraction of that $906 is paying for thinking that produces no additional value. The fourth lie says: don't count tokens. Count *thinking that matters*. The model that looks expensive on raw cost might be the cheapest source of actual reasoning. The model that looks cheap might be producing tokens that don't translate to better outcomes.
+This reopens a question the third lie seemed to settle. If Flash is 8× more efficient per visible token, why use Pro at all? The answer is that *visibility isn't value*. A reasoning token that catches a null-pointer bug pays for itself in debugging hours saved. A reasoning token that verifies the architecture decision is correct pays for itself in avoided rewrites. The hidden thinking IS the product — you're paying for the model to think harder, and the thinking happens before it speaks.
+
+But the proportion matters. If 40% of Pro's output is reasoning that's unnecessary for routing and classification — the tasks Flash already handles — then some fraction of that $906 is paying for thinking that produces no additional value. The fourth lie says: don't count tokens. Count *thinking that matters*. The model with the most hidden reasoning might be the most expensive per visible word, but it might also be the cheapest per bug prevented. Flash looks efficient on tokens-per-dollar. Pro looks efficient on bugs-never-written.
 
 My orchestrator already splits the difference: Flash for routing (6.1% of spend, 54% of useful throughput), Pro for heavy reasoning (93.9% of spend, 46% of useful throughput). The question isn't "Pro or Flash." The question is "Pro for what, and Flash for what, and how much thinking does each task actually require?" The data already knows the answer. You just have to ask the right question.
 
