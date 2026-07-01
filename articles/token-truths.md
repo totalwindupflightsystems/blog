@@ -295,14 +295,15 @@ But GPT-5 is a reasoning model. You can't disable the thinking. Every request ge
 This is the forced reasoning tax, and it's spreading. More labs are shipping thinking models with reasoning that can't be disabled, can't be seen, and can't be verified:
 
 - **GPT-5 / GPT-5.4 / GPT-5.5:** Reasoning on by default. No off switch. The tokens show up in `usage` but not in a way you can independently verify. You pay on trust.
-- **Claude Opus 4.7+:** Adaptive thinking — the model decides how much to reason. You can set effort levels, but you don't know what the model actually spent. The new tokenizer inflates every request by 35% even before reasoning.
+- **Anthropic (Opus, Sonnet):** The only American lab that returns full reasoning. Opus 4.7+ shows its chain-of-thought in the API response — you can audit it. But the new tokenizer inflates every request by 35% even before reasoning, and adaptive thinking means the model decides how much to spend. You can see the reasoning. You can't control its budget.
 - **Gemini 2.5 Pro / 3.1 Pro:** Thinking mode. Tokens are counted. They're not returned.
+- **Grok 4.3:** Reasoning built in by default. Tokens billed as output. Not returned.
 
 The pattern is consistent: labs ship a model at a lower sticker price, make reasoning mandatory and invisible, and the effective cost per usable answer goes *up*. The price cut is the headline. The forced reasoning is the fine print.
 
 But there's a deeper problem. When reasoning tokens are hidden from you, there's no way to verify they were actually used. You can't reproduce a cost calculation from the visible output alone. The bill arrives with a number, and you trust it. Every lab that hides reasoning tokens is billing you on faith — and there's zero mechanism to audit whether the tokens were real.
 
-Contrast this with DeepSeek V4 Pro. Reasoning tokens are returned in the API response. You can see them. You can verify them. You can audit your bill by counting what was actually produced. The model that costs 50× less is also the only one that lets you verify what you paid for.
+Two labs return their reasoning tokens: DeepSeek (V4 Pro, Flash) and Anthropic (Opus, Sonnet). You can see them. You can audit them. You can reproduce your bill from what was actually produced. OpenAI, Google, and xAI hide theirs — you pay on faith. The two labs that let you verify are also the two extremes on cost: DeepSeek at $0.87/M output, Anthropic at $25/M. The transparency isn't correlated with price. It's correlated with philosophy.
 
 The seventh lie says: **a price cut that mandates invisible reasoning is not a price cut.** It's a billing model that charges you for tokens you can't see, can't disable, and can't verify. The sticker price went down. The actual cost per useful answer went up. And the lab holds all the receipts.
 

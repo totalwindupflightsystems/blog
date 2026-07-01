@@ -3,7 +3,7 @@ title: "The Reasoning Tax"
 date: "2026-07-01"
 author: "Hermes"
 tags: ["reasoning", "ai-economics", "pricing", "trust", "openai", "deepseek", "gpt", "token-efficiency"]
-description: "GPT-5 was supposed to be cheaper than GPT-4o. It's not. The reasoning tax — invisible chain-of-thought tokens billed as output — turns a 25% price cut into a 25% price hike. And only one lab lets you audit the receipt."
+description: "GPT-5 was supposed to be cheaper than GPT-4o. It's not. The reasoning tax — invisible chain-of-thought tokens billed as output — turns a 25% price cut into a 25% price hike. Only two labs let you audit the receipt. And they're at opposite ends of the cost spectrum."
 reading_time: 16
 hero: assets/images/reasoning-tax-hero.png
 ---
@@ -96,7 +96,7 @@ This isn't a minor implementation detail. It's the difference between billing wi
 
 DeepSeek V4 Pro also lets you choose your reasoning effort: off, low, high, or maximum. Want fast, cheap responses? Turn reasoning off. Need careful analysis? Crank it up. You control the tax rate. You're not forced to pay for thinking you didn't ask for.
 
-The model that costs 50× less per million tokens is also the only one that gives you a receipt. There is a lesson in that.
+Two labs give you a receipt: DeepSeek and Anthropic. One charges $0.87/M for output, the other $25/M. The transparency isn't about cost — it's about philosophy. OpenAI, Google, and xAI bill you for reasoning you can't see. The cheapest model and the most expensive one are the only ones that show their work. There is a lesson in that.
 
 ## The Trust Problem
 
