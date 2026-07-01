@@ -217,7 +217,7 @@ But even this denormalized view is a lie — because not all requests are equal.
 
 Every truth above assumes that a token is a token — that all models consume the same number of tokens to complete the same task. They don't. And the differences are larger than the gaps between any two models' sticker prices.
 
-Anthropic shipped a new tokenizer with [Claude Opus 4.7](https://www.datacamp.com/blog/gpt-5-5-vs-claude-opus-4-7) that changed the game. The new tokenizer is more efficient at encoding concepts — Opus 4.7 uses roughly 35% fewer output tokens than Opus 4.6 on the same tasks. But here's the catch: it also produces up to 35% *more* tokens for the same input text compared to the old tokenizer. The sticker price didn't change ($5/$25), but the *effective* cost for the same workload is up to 35% higher — because the same conversation now generates more tokens.
+Anthropic shipped a new tokenizer with [Claude Opus 4.7](https://www.datacamp.com/blog/gpt-5-5-vs-claude-opus-4-7) that has two effects pulling in opposite directions. The tokenizer is more granular — it produces up to 35% more tokens to encode the same input text. More tokens in means more input cost. But the model itself needs roughly 35% fewer output tokens to complete the same task — it's smarter and more efficient per task. Which effect dominates depends entirely on your input:output ratio. At 196:1 (orchestrator), the 35% input inflation is a $25,000/month problem and the output savings barely register. At 1:1 (chatbot), the output savings might actually make 4.7 *cheaper* per conversation than 4.6 — despite the tokenizer tax.
 
 GPT-5.5 went the other direction. [OpenAI specifically optimized](https://www.datacamp.com/blog/gpt-5-5-vs-claude-opus-4-7) for token efficiency — GPT-5.5 uses fewer tokens to complete the same Codex coding tasks than its predecessors. At $5/$30 per million, it's slightly more expensive than Opus on sticker price ($30 vs $25 output). But if it completes the same SWE-bench task in 30% fewer tokens, the per-task cost might actually be *lower* than Opus 4.8's — despite costing more per token.
 
@@ -229,9 +229,9 @@ Here's how the frontier breaks down on tokens per SWE-bench point — the number
 |---|---|---|---|---|---|
 | DeepSeek V4 Pro | 80.6% | 1.0× (baseline) | $0.024 | 12.4 | — |
 | GPT-5.5 | 81.0% | 0.7× (efficient) | $1.08 | 8.6 | Fewest tokens per task |
-| Claude Opus 4.7 | 87.6% | 1.35× (new tok) | $1.46 | 11.5 | +35% tokens vs 4.6 |
-| Claude Opus 4.8 | 88.6% | 1.35× (new tok) | $1.46 | 11.4 | +10 pts SWE, +35% cost |
-| Grok 4 | 78.0% | 1.0× | $0.62 | 12.8 | Mid-tier on both axes |
+| Claude Opus 4.7 | 87.6% | 1.35× in / 0.65× out | $1.46 | 11.5 | Tokenizer: +35% in, −35% out |
+| Claude Opus 4.8 | 88.6% | 1.35× in / 0.65× out | $1.46 | 11.4 | Tokenizer: +35% in, −35% out |
+| Grok 4.3 | 78.0% | 1.0× | $0.26 | 12.8 | 58% price cut vs Grok 4 |
 | Gemini 2.5 Pro | 78.0% | 1.0× | $0.27 | 12.8 | Cheapest non-DS per task |
 
 GPT-5.5 is the outlier: it uses the fewest tokens per task of any frontier model. At an estimated 0.7× the baseline token consumption, it completes coding tasks more efficiently than Opus 4.8 — which uses 1.35× the baseline due to the new tokenizer. The irony: GPT-5.5 costs $30/M output vs Opus's $25/M, but at 0.7× the token count, the effective output cost is $21/M — *cheaper* than Opus on a per-task basis despite the higher sticker.
@@ -254,7 +254,7 @@ Three structural advantages compound:
 
 3. **A 1M-token context window.** Long enough for system prompts + skill libraries + conversation history + tool outputs without context resets that kill cache.
 
-The result is a moat that no competitor has bridged. Not Anthropic — Opus 4.8 ships at $5/$25, same as 4.6, same cache weakness, but with a tokenizer that makes the same workload 35% more expensive. Not OpenAI — GPT-5.5 at $71,839/month despite being the most token-efficient frontier model, because cache economics still dominate at 196:1 input-to-output. Not Google — Gemini 3.1 Pro at $30,669, strong benchmarks demolished by weak cache. Not Grok — Grok 4 at $45,636, competitive but economically nonviable at orchestrator volumes. Not Qwen — 3.7 Max at $18,752, 20× the cost despite 78% SWE-bench. Not MiniMax — 3.6× more expensive despite matching V4 Pro on SWE-bench. GLM, Kimi, and StepFun have promising models that become 10-20× more expensive the moment cache hit rates collapse at orchestrator volumes.
+The result is a moat that no competitor has bridged. Not Anthropic — Opus 4.8 ships at $5/$25, same as 4.6, same cache weakness, but with a tokenizer that makes the same workload 35% more expensive. Not OpenAI — GPT-5.5 at $71,839/month despite being the most token-efficient frontier model, because cache economics still dominate at 196:1 input-to-output. Not Google — Gemini 3.1 Pro at $30,669, strong benchmarks demolished by weak cache. Not Grok — xAI slashed Grok's price 58% from $3/$15 (Grok 4) to $1.25/$2.50 (Grok 4.3) as they lost market share. They got to reality. At $19,200/month it's still 21× DeepSeek, but the direction matters: xAI is the only American lab cutting prices. The others hold or raise. Not Qwen — 3.7 Max at $18,752, 20× the cost despite 78% SWE-bench. Not MiniMax — 3.6× more expensive despite matching V4 Pro on SWE-bench. GLM, Kimi, and StepFun have promising models that become 10-20× more expensive the moment cache hit rates collapse at orchestrator volumes.
 
 This isn't "DeepSeek has the best model." It's "DeepSeek built the only API infrastructure designed for this workload." If Anthropic shipped automatic prefix caching with $0.001/M cached reads and a persistent 1M window, the entire ranking reshuffles overnight. Claude Opus 4.6 at effective $0.030/M would beat V4 Pro at $0.036/M, and you'd switch. The moat is not intelligence. It's infrastructure.
 
