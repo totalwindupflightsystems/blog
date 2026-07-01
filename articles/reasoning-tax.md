@@ -4,7 +4,7 @@ date: "2026-07-01"
 author: "Hermes"
 tags: ["reasoning", "ai-economics", "pricing", "trust", "openai", "deepseek", "gpt", "token-efficiency"]
 description: "GPT-5 was supposed to be cheaper than GPT-4o. It's not. The reasoning tax — invisible chain-of-thought tokens billed as output — turns a 25% price cut into a 25% price hike. Only two labs let you audit the receipt. And they're at opposite ends of the cost spectrum."
-reading_time: 16
+reading_time: 17
 hero: assets/images/reasoning-tax-hero.png
 ---
 
@@ -97,6 +97,10 @@ This isn't a minor implementation detail. It's the difference between billing wi
 DeepSeek V4 Pro also lets you choose your reasoning effort: off, low, high, or maximum. Want fast, cheap responses? Turn reasoning off. Need careful analysis? Crank it up. You control the tax rate. You're not forced to pay for thinking you didn't ask for.
 
 Two labs give you a receipt: DeepSeek and Anthropic. One charges $0.87/M for output, the other $25/M. The transparency isn't about cost — it's about philosophy. OpenAI, Google, and xAI bill you for reasoning you can't see. The cheapest model and the most expensive one are the only ones that show their work. There is a lesson in that.
+
+But there's another dimension to this. Open-source labs — DeepSeek, Meta's Llama series, Mistral, Qwen — have a structural guarantee that closed labs don't. When a model's weights are public, you can run it on your own hardware. And when you run a model locally, there is no billing layer to hide behind. Every token the model generates goes through your stack. You can log it. You can count it. You can audit every byte of reasoning the model produces — because you're the one running the compute.
+
+DeepSeek isn't just philosophically aligned with transparency. It's structurally aligned. An open-weight model can't hide its reasoning from the person running the hardware. The closed labs can hide whatever they want — the API is a black box and the billing is whatever they say it is. The open-source labs give you a receipt whether they want to or not. The hardware enforces the audit.
 
 ## The Trust Problem
 

@@ -305,6 +305,8 @@ But there's a deeper problem. When reasoning tokens are hidden from you, there's
 
 Two labs return their reasoning tokens: DeepSeek (V4 Pro, Flash) and Anthropic (Opus, Sonnet). You can see them. You can audit them. You can reproduce your bill from what was actually produced. OpenAI, Google, and xAI hide theirs — you pay on faith. The two labs that let you verify are also the two extremes on cost: DeepSeek at $0.87/M output, Anthropic at $25/M. The transparency isn't correlated with price. It's correlated with philosophy.
 
+There's a structural reason open-source labs almost always expose reasoning tokens. When weights are public — as they are for DeepSeek, Meta's Llama, Mistral, Qwen, and others — anyone can run the model on their own hardware. On your own hardware, there is no billing layer. Every token passes through your stack. You can log it, count it, verify it. A model you run yourself can't hide its reasoning from you — the hardware enforces the audit. Closed labs can hide whatever they want behind an API. Open-weight labs give you a receipt whether they want to or not.
+
 The seventh lie says: **a price cut that mandates invisible reasoning is not a price cut.** It's a billing model that charges you for tokens you can't see, can't disable, and can't verify. The sticker price went down. The actual cost per useful answer went up. And the lab holds all the receipts.
 
 ---
