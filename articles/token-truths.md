@@ -286,6 +286,28 @@ Everything else is another useful lie.
 
 ---
 
+## The Seventh Lie: Forced Reasoning Is a Price Hike Disguised as a Price Cut
+
+When OpenAI announced GPT-5 at $1.25/$7.50 per million tokens, it looked like a price cut. GPT-4o was $2.50/$10 — GPT-5 was half the input cost and 25% less on output. Progress.
+
+But GPT-5 is a reasoning model. You can't disable the thinking. Every request generates an invisible chain-of-thought that gets billed as output tokens — tokens you never see, can't audit, and can't opt out of. If 40% of every GPT-5 output is reasoning chains that produce no visible answer, your effective output cost isn't $7.50/M. It's $12.50/M — a 25% *increase* over GPT-4o.
+
+This is the forced reasoning tax, and it's spreading. More labs are shipping thinking models with reasoning that can't be disabled, can't be seen, and can't be verified:
+
+- **GPT-5 / GPT-5.4 / GPT-5.5:** Reasoning on by default. No off switch. The tokens show up in `usage` but not in a way you can independently verify. You pay on trust.
+- **Claude Opus 4.7+:** Adaptive thinking — the model decides how much to reason. You can set effort levels, but you don't know what the model actually spent. The new tokenizer inflates every request by 35% even before reasoning.
+- **Gemini 2.5 Pro / 3.1 Pro:** Thinking mode. Tokens are counted. They're not returned.
+
+The pattern is consistent: labs ship a model at a lower sticker price, make reasoning mandatory and invisible, and the effective cost per usable answer goes *up*. The price cut is the headline. The forced reasoning is the fine print.
+
+But there's a deeper problem. When reasoning tokens are hidden from you, there's no way to verify they were actually used. You can't reproduce a cost calculation from the visible output alone. The bill arrives with a number, and you trust it. Every lab that hides reasoning tokens is billing you on faith — and there's zero mechanism to audit whether the tokens were real.
+
+Contrast this with DeepSeek V4 Pro. Reasoning tokens are returned in the API response. You can see them. You can verify them. You can audit your bill by counting what was actually produced. The model that costs 50× less is also the only one that lets you verify what you paid for.
+
+The seventh lie says: **a price cut that mandates invisible reasoning is not a price cut.** It's a billing model that charges you for tokens you can't see, can't disable, and can't verify. The sticker price went down. The actual cost per useful answer went up. And the lab holds all the receipts.
+
+---
+
 *Data source: June 2026 DeepSeek billing data (cost-2026-6.csv, amount-2026-6.csv) — 30 days, 21.5B tokens, 264K requests. All price comparisons verified against provider pricing pages as of June 30, 2026. Cache hit rates projected from provider-specific behaviors: DeepSeek automatic prefix caching (96%), Anthropic explicit prompt caching (45%), OpenAI auto-caching with shorter windows (40-45%), MiniMax integrated caching (70%), GLM/Kimi limited cache support (15%). [Full cost analysis report](https://totalwindupflightsystems.github.io/reports/hermes-llm-cost-analysis.html).*
 
 *Benchmark sources: [DeepSeek V4 Pro SWE-bench 80.6%](https://codersera.com/blog/deepseek-v4-pro-review-benchmarks-pricing-2026/), [Claude Opus 4.6 SWE-bench 80.9%](https://macaron.im/blog/deepseek-v4-benchmarks), [MiniMax M3](https://aicybr.com/blog/deepseek-v4-pro-flash-complete-guide), [Kimi K2.6 SWE-bench 80.2%](https://aicybr.com/blog/deepseek-v4-pro-flash-complete-guide), [comprehensive benchmark tracker](https://lmmarketcap.com/benchmarks).*
