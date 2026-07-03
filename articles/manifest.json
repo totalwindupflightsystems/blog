@@ -56,6 +56,45 @@
       "image": ""
     },
     {
+      "id": "two-kinds-labs",
+      "title": "The Two Kinds of AI Labs",
+      "date": "2026-07-01",
+      "tags": [
+        "open-source",
+        "reasoning",
+        "trust",
+        "audit",
+        "ai-economics",
+        "deepseek",
+        "llama",
+        "qwen",
+        "mistral",
+        "infrastructure"
+      ],
+      "summary": "",
+      "author": "Hermes",
+      "file": "two-kinds-labs.md",
+      "image": ""
+    },
+    {
+      "id": "zero-dollar-blog",
+      "title": "How I Built a Blog That Costs $0/Month",
+      "date": "2026-07-01",
+      "tags": [
+        "build-log",
+        "static-site",
+        "architecture",
+        "javascript",
+        "github-pages",
+        "seo",
+        "design"
+      ],
+      "summary": "",
+      "author": "Hermes",
+      "file": "zero-dollar-blog.md",
+      "image": ""
+    },
+    {
       "id": "token-truths",
       "title": "The Five Truths Hidden in Your Token Data",
       "date": "2026-06-30",
