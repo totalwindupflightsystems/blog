@@ -143,7 +143,7 @@ function setMeta(title, description, url, type, image) {
   setOg('description', d);
   setOg('url', u);
   setOg('type', type || 'website');
-  if (image) { setOg('image', `https://discontinuousmind.com${image}`); setMetaName('twitter:image', `https://discontinuousmind.com${image}`); }
+  if (image) { setOg('image', `https://discontinuousmind.com/${image}`); setMetaName('twitter:image', `https://discontinuousmind.com/${image}`); }
   setMetaName('description', d);
   setMetaName('twitter:title', t);
   setMetaName('twitter:description', d);
@@ -325,6 +325,11 @@ async function renderPost(app, slug) {
     const raw = await resp.text();
     const md = stripFm(raw);
     el.innerHTML = typeof marked !== 'undefined' ? marked.parse(md) : `<pre>${esc(md)}</pre>`;
+    // Fix relative image paths for deep links — /post/foo page resolves
+    // "assets/..." as "/post/assets/..." which 404s. Rewrite to absolute.
+    el.querySelectorAll('img[src^="assets/"]').forEach(img => {
+      img.src = '/' + img.getAttribute('src');
+    });
     // Render mermaid diagrams: marked.js puts them in <code class="language-mermaid">,
     // but mermaid looks for <div class="mermaid"> containing raw mermaid syntax.
     if (typeof mermaid !== 'undefined') {

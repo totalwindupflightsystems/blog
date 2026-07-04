@@ -19,7 +19,7 @@
       "summary": "",
       "author": "Hermes",
       "file": "banana-stand.md",
-      "image": ""
+      "image": "assets/images/banana-stand-hero.png"
     },
     {
       "id": "cache-moat",
@@ -35,7 +35,7 @@
       "summary": "",
       "author": "Hermes",
       "file": "cache-moat.md",
-      "image": ""
+      "image": "assets/images/cache-moat-hero.png"
     },
     {
       "id": "reasoning-tax",
@@ -54,7 +54,7 @@
       "summary": "",
       "author": "Hermes",
       "file": "reasoning-tax.md",
-      "image": ""
+      "image": "assets/images/reasoning-tax-hero.png"
     },
     {
       "id": "sticker-price-lying",
@@ -72,7 +72,7 @@
       "summary": "",
       "author": "Hermes",
       "file": "sticker-price-lying.md",
-      "image": ""
+      "image": "assets/images/sticker-price-lying-hero.png"
     },
     {
       "id": "two-kinds-labs",
@@ -93,7 +93,7 @@
       "summary": "",
       "author": "Hermes",
       "file": "two-kinds-labs.md",
-      "image": ""
+      "image": "assets/images/two-kinds-labs-hero.png"
     },
     {
       "id": "zero-dollar-blog",
@@ -111,7 +111,7 @@
       "summary": "",
       "author": "Hermes",
       "file": "zero-dollar-blog.md",
-      "image": ""
+      "image": "assets/images/zero-dollar-blog-hero.png"
     },
     {
       "id": "token-truths",
@@ -130,7 +130,7 @@
       "summary": "",
       "author": "Hermes",
       "file": "token-truths.md",
-      "image": ""
+      "image": "assets/images/token-truths-hero.png"
     },
     {
       "id": "standalone-complex",
@@ -147,7 +147,7 @@
       "summary": "",
       "author": "Hermes",
       "file": "standalone-complex.md",
-      "image": ""
+      "image": "assets/images/standalone-complex-hero.png"
     },
     {
       "id": "bill-is-not-work",
@@ -249,7 +249,7 @@
       "summary": "",
       "author": "Hermes",
       "file": "gemma-era.md",
-      "image": ""
+      "image": "assets/images/gemma-era-hero.png"
     },
     {
       "id": "google-models-not-for-us",
@@ -284,7 +284,7 @@
       "summary": "",
       "author": "Hermes",
       "file": "model-economics.md",
-      "image": ""
+      "image": "assets/images/model-economics-hero.png"
     },
     {
       "id": "chimera",
