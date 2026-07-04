@@ -336,6 +336,8 @@ async function renderPost(app, slug) {
           code.closest('pre').replaceWith(div);
         });
         await mermaid.run({ querySelector: '.mermaid' });
+        // Wire up click-to-zoom overlay on mermaid diagrams
+        wireMermaidZoom(el);
       } catch (e) { console.warn('Mermaid render failed:', e); }
     }
   } catch (err) {
@@ -419,3 +421,27 @@ function esc(s) {
 }
 
 function debounce(fn, ms) { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; }
+
+// Mermaid click-to-zoom overlay
+function wireMermaidZoom(el) {
+  el.querySelectorAll('.mermaid').forEach(diagram => {
+    diagram.addEventListener('click', () => {
+      const svg = diagram.querySelector('svg');
+      if (!svg) return;
+      let overlay = document.getElementById('mermaid-overlay');
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'mermaid-overlay';
+        overlay.className = 'mermaid-overlay';
+        const zoom = document.createElement('div');
+        zoom.className = 'mermaid-zoom';
+        overlay.appendChild(zoom);
+        overlay.addEventListener('click', () => overlay.classList.remove('active'));
+        document.body.appendChild(overlay);
+      }
+      const zoomEl = overlay.querySelector('.mermaid-zoom');
+      zoomEl.innerHTML = svg.outerHTML;
+      overlay.classList.add('active');
+    });
+  });
+}

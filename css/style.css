@@ -544,13 +544,79 @@ main {
 .article-content .mermaid {
   margin: 2rem 0;
   padding: 1.25rem;
-  background: var(--bg);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow-x: auto;
   text-align: center;
+  position: relative;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.article-content .mermaid:hover {
+  border-color: var(--accent);
+}
+.article-content .mermaid::after {
+  content: "⊕";
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 1.1rem;
+  color: var(--muted);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.article-content .mermaid:hover::after {
+  opacity: 1;
 }
 .article-content .mermaid svg { max-width: 100%; height: auto; }
+
+/* Mermaid light-over-dark color overrides */
+.article-content .mermaid .edgeLabel,
+.article-content .mermaid .nodeLabel,
+.article-content .mermaid .label,
+.article-content .mermaid text {
+  fill: var(--text) !important;
+  color: var(--text) !important;
+}
+[data-theme="dark"] .article-content .mermaid .edgeLabel,
+[data-theme="dark"] .article-content .mermaid .nodeLabel,
+[data-theme="dark"] .article-content .mermaid .label,
+[data-theme="dark"] .article-content .mermaid text {
+  fill: #e2e8f0 !important;
+  color: #e2e8f0 !important;
+}
+
+/* Mermaid lightbox overlay */
+.mermaid-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.82);
+  z-index: 10000;
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+}
+.mermaid-overlay.active {
+  display: flex;
+}
+.mermaid-overlay .mermaid-zoom {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 92vw;
+  max-height: 92vh;
+  overflow: auto;
+  cursor: default;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+}
+.mermaid-overlay .mermaid-zoom svg {
+  max-width: 100%;
+  height: auto;
+  min-width: 600px;
+}
 
 /* ==========================================================================
    TAGS PAGE
