@@ -16,6 +16,11 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://discontinuousmind.com/post/banana-stand</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://discontinuousmind.com/post/cache-moat</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
