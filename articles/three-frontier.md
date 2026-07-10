@@ -29,7 +29,7 @@ Here's the scoreboard.
 | **Input price** | $5/M | $10/M | $2/M |
 | **Cached input** | $2.50/M | Included in sub | $0.50/M |
 | **Output price** | $30/M | $50/M | $6/M |
-| **Context window** | 1.05M | 200K | 500K |
+| **Context window** | 1.05M | 1M | 500K |
 | **Max output** | 128K | 128K | Unknown |
 | **Released** | July 9 | July 1 (returned) | July 8 |
 | **TerminalBench 2.1** | 88.8% (91.9% Ultra) | 83.4% | Not published |
