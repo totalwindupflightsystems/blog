@@ -30,7 +30,7 @@ Here's the scoreboard.
 | **Cached input** | $2.50/M | Included in sub | $0.50/M |
 | **Output price** | $30/M | $50/M | $6/M |
 | **Context window** | 1.05M | 1M | 500K |
-| **Max output** | 128K | 128K | Unknown |
+| **Max output** | 128K | 128K | 500K |
 | **Released** | July 9 | July 1 (returned) | July 8 |
 | **TerminalBench 2.1** | 88.8% (91.9% Ultra) | 83.4% | Not published |
 | **SWE-Bench Pro** | Not published | 80.3% | Not published |
@@ -53,7 +53,7 @@ Claude Fable 5 requires 30-day data retention for all Mythos-class models. No ex
 
 Grok 4.5 has a stronger enterprise posture than its consumer-facing reputation suggests, but it's still less definitive than Sol's. xAI's Enterprise Terms of Service state that "All User Content will be automatically deleted," and Business plans ($30/user/month) include SOC 2 compliance and an explicit guarantee that data "will not be used for model training." However, the enterprise TOS contains a safety/AUP carve-out: xAI retains "the minimum data necessary" for policy enforcement and "will permanently delete it promptly when the justification no longer applies." This is a default-delete-with-exceptions model — not the unconditional ZDR that OpenAI offers on Sol or that Fireworks.ai offers on all models. It's worlds better than Fable 5's mandatory 30-day retention with no exceptions. But it's not a clean ZDR guarantee that an enterprise legal team can read once and approve.
 
-The pricing story is dramatic. At $2/$6 with cached input at $0.50, Grok 4.5 is the cheapest frontier model by a wide margin — 80% less than Fable 5 on input, 88% less on output, and roughly 17x cheaper per task than Opus 4.8 according to one analysis. The API is accessible without an X subscription (API access ≠ chat interface), which fixes the earlier concern about the X Premium gate. However, Grok 4.5 has no published batch discount, and xAI's enterprise program is newer and less documented than OpenAI's or Anthropic's. The compliance documentation exists (SOC 2, custom retention, SSO, dedicated infrastructure) but requires talking to sales rather than reading a public page. For enterprises that need a procurement-ready frontier model, this "call us" posture adds friction that Sol and Fable 5 don't have — Sol because OpenAI publishes everything, Fable 5 because Anthropic's enterprise sales machine has been running for years.
+The pricing story is dramatic. At $2/$6 with cached input at $0.50, Grok 4.5 is the cheapest frontier model by a wide margin — 80% less than Fable 5 on input, 88% less on output, and roughly 17x cheaper per task than Opus 4.8 according to one analysis. But the sleeper stat is max output: 500K tokens, matching its full context window. That's 4x more than Sol or Fable 5 at 128K. For long-form generation, document processing, or agent tasks that produce substantial intermediate output, Grok 4.5 gives you runway the other two don't.
 
 ## The Irony
 
@@ -101,7 +101,7 @@ If you're an enterprise evaluating these three models, here's what procurement a
 
 **Claude Fable 5:** Frontier capability, excellent SWE-Bench Pro score, premium pricing. Requires 30-day retention of all prompts and outputs. Your existing ZDR contract is nullified. Microsoft blocked it internally. Your legal team won't approve it for anything involving proprietary code, customer data, or internal strategy — which is everything an enterprise AI model does.
 
-**Grok 4.5:** Frontier capability at commodity pricing ($2/$6, $0.50 cached). SOC 2 on Business plans, enterprise TOS guarantees automatic deletion with a narrow AUP carve-out. The cheapest frontier model — roughly 17x cheaper per task than Opus 4.8. Enterprise posture is real but "call us" — SSO, dedicated infra, custom compliance all require talking to sales rather than reading a public page. API doesn't require X Premium (unlike the chat interface). If xAI publishes its enterprise controls as clearly as it publishes its pricing, Grok becomes the model that's cheap enough for everything and compliant enough for most things.
+**Grok 4.5:** Frontier capability at commodity pricing ($2/$6, $0.50 cached). SOC 2 on Business plans, enterprise TOS guarantees automatic deletion with a narrow AUP carve-out. The cheapest frontier model — roughly 17x cheaper per task than Opus 4.8 — with a 500K max output window that dwarfs the competition's 128K. Enterprise posture is real but "call us" — SSO, dedicated infra, custom compliance all require talking to sales.
 
 The benchmarks don't decide this. The price doesn't decide this. The data retention column decides this. And in that column, one model has a checkmark, one has a strikethrough, and one has a question mark.
 
