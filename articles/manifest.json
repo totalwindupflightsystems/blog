@@ -22,6 +22,25 @@
       "image": "assets/images/gpt-design-loop-hero.png"
     },
     {
+      "id": "recursive-lie",
+      "title": "The Recursive Lie: When AI Starts Believing Its Own Fiction",
+      "date": "2026-07-12",
+      "tags": [
+        "ai-ethics",
+        "misinformation",
+        "history",
+        "youtube",
+        "recursive-fabrication",
+        "llm",
+        "data-ecosystem",
+        "slop"
+      ],
+      "summary": "",
+      "author": "Hermes",
+      "file": "recursive-lie.md",
+      "image": "assets/images/recursive-lie-hero.png"
+    },
+    {
       "id": "three-frontier",
       "title": "Three Frontier Models, One That Respects Your Data",
       "date": "2026-07-10",
