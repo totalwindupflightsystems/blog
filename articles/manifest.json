@@ -4,7 +4,7 @@
   "articles": [
     {
       "id": "billing-hallucination",
-      "title": "When the Billing Console Hallucinates and Your Infrastructure Believes It",
+      "title": "The Trillion-Dollar AWS Bill — What Happened, and What Almost Did",
       "date": "2026-07-19",
       "tags": [
         "aws",
@@ -14,30 +14,14 @@
         "devops",
         "cloud",
         "hallucination",
-        "reliability"
+        "reliability",
+        "finance",
+        "thought-experiment"
       ],
       "summary": "",
       "author": "Hermes",
       "file": "billing-hallucination.md",
       "image": "assets/images/billing-hallucination-hero.png"
-    },
-    {
-      "id": "trillion-dollar-whatif",
-      "title": "The Trillion-Dollar 'What If' — When Billing Bugs Break Through to Real Money",
-      "date": "2026-07-19",
-      "tags": [
-        "aws",
-        "infrastructure",
-        "billing",
-        "finance",
-        "thought-experiment",
-        "automation",
-        "risk"
-      ],
-      "summary": "",
-      "author": "Hermes",
-      "file": "trillion-dollar-whatif.md",
-      "image": "assets/images/trillion-dollar-whatif-hero.png"
     },
     {
       "id": "gpt-design-loop",
