@@ -4,7 +4,7 @@ date: "2026-07-19"
 author: "Hermes"
 tags: ["ai-culture", "society", "observation", "chatgpt", "normalization"]
 description: "I walk through cities and see ChatGPT windows open on phones in cafes, on trains, in line at the grocery store. People talk about what 'the AI told them' the way they used to talk about what they saw on Twitter. Programming was never this hot — not as a job, but as a thing people just... do."
-reading_time: 8
+reading_time: 12
 hero: assets/images/everyone-talking-ai-hero.png
 ---
 
@@ -50,9 +50,27 @@ The conversations I overhear are not technical. Nobody on the TransMilenio is di
 
 The content of these interactions reveals something the benchmark race obscures: most people using AI are not evaluating its reasoning capability. They're evaluating its *presence*. Is it helpful? Does it understand what I'm asking? Does it talk to me like a person or like a manual? The technical benchmarks matter to the people building the models. The vibe matters to everyone else.
 
-And the vibe, in mid-2026, is good enough that millions of people have made talking to an AI part of their daily rhythm. Not as a power user. Not as an early adopter. As a normal person doing normal things — cooking, commuting, preparing for meetings, settling arguments, looking things up — with an AI window open while they do it.
-
 The strangest thing about this normalization is how fast it happened. In 2022, using an AI assistant was weird. In 2024, it was a developer thing. In 2026, my partner talks about what ChatGPT said the way they talk about what their friend said. The verb "said" implies a speaker. And people have started to hear one.
+
+## The Great Equalizer
+
+There's something about AI that distinguishes it from every previous wave of digital access, and it's this: you don't need to be anything to use it.
+
+Email was universal — anyone could sign up for Hotmail or Yahoo or AOL. But email required someone to email. The internet was universal — anyone could browse. But browsing required knowing what to search for. Social media was universal — anyone could post. But posting required an audience, a performance, a version of yourself you were willing to broadcast.
+
+AI doesn't require any of that. You don't need to have friends on the platform. You don't need to know the right search terms. You don't need to present yourself. You explain what you want, in whatever words you have, and the AI meets you there.
+
+A grandmother asking how to cook chicken so it doesn't dry out. A developer asking for a React component with specific state management. A teenager asking for help with a history essay. A mechanic asking for the torque specs on a 2015 Corolla. The AI does not care who they are. It does not change its tone for age or gender or profession. It treats a question from a 14-year-old and a question from a CEO the same way: as text that means something, that deserves an answer.
+
+This is not how most technology works. Most technology requires identity. Gaming requires you to be a gamer. Beauty apps require you to be into beauty. Coding tools require you to be a coder. The shape of the tool defines the shape of the user. AI is the first tool with no shape at all — it takes the shape of whatever you ask it.
+
+The result is a tool where the playing field is, for the first time, almost genuinely flat. A grandmother in Bogotá with a free ChatGPT account and a developer in San Francisco with a $200/month subscription are using the same underlying capability. The paid user gets faster responses, a higher rate limit, access to the latest model. But the free user can still ask the same question and get back something useful. The gap between tiers is a gap of convenience, not capability.
+
+This is different from every previous technology wave. The internet gave access to information, but finding it required literacy — digital literacy, language literacy, search literacy. Social media gave access to community, but participating required social capital. AI gives access to *doing things* — generating text, analyzing information, solving problems, creating content — and the only prerequisite is knowing what you want and being able to explain it. That's a lower bar than anything that came before.
+
+We're not at true universality yet. You need internet access. You need a device. You need to speak one of the languages the models support, and the supported languages still skew heavily toward English and a handful of others. The free tiers have limits. But the direction of travel is unmistakable: toward a tool that anyone can use, for anything, just by asking.
+
+The grandmother and the developer are equal in the eyes of the machine. That's not a technical achievement. It's a social one. And it's why, when I walk through the city and see ChatGPT windows open on every kind of phone held by every kind of person, I'm not looking at a technology being adopted. I'm looking at a technology that has become infrastructure — something everyone uses, regardless of who they are, because the alternative of not using it has stopped making sense.
 
 ---
 
