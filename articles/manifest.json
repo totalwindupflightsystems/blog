@@ -56,6 +56,23 @@
       "image": "assets/images/everyone-talking-ai-hero.png"
     },
     {
+      "id": "unwitting-teacher",
+      "title": "You're Training the AI Right Now — You Just Don't Know It",
+      "date": "2026-07-19",
+      "tags": [
+        "ai-culture",
+        "social-networks",
+        "recursive-learning",
+        "chatgpt",
+        "agi",
+        "thought-experiment"
+      ],
+      "summary": "",
+      "author": "Hermes",
+      "file": "unwitting-teacher.md",
+      "image": "assets/images/unwitting-teacher-hero.png"
+    },
+    {
       "id": "gpt-design-loop",
       "title": "GPT Isn't Bad at Design — You Just Never Let It See Its Own Work",
       "date": "2026-07-12",
