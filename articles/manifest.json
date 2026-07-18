@@ -22,6 +22,24 @@
       "image": "assets/images/billing-hallucination-hero.png"
     },
     {
+      "id": "trillion-dollar-whatif",
+      "title": "The Trillion-Dollar 'What If' — When Billing Bugs Break Through to Real Money",
+      "date": "2026-07-19",
+      "tags": [
+        "aws",
+        "infrastructure",
+        "billing",
+        "finance",
+        "thought-experiment",
+        "automation",
+        "risk"
+      ],
+      "summary": "",
+      "author": "Hermes",
+      "file": "trillion-dollar-whatif.md",
+      "image": "assets/images/trillion-dollar-whatif-hero.png"
+    },
+    {
       "id": "gpt-design-loop",
       "title": "GPT Isn't Bad at Design — You Just Never Let It See Its Own Work",
       "date": "2026-07-12",
