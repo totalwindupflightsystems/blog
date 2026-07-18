@@ -16,7 +16,17 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://discontinuousmind.com/post/ai-review-channel</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://discontinuousmind.com/post/billing-hallucination</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discontinuousmind.com/post/everyone-talking-ai</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
