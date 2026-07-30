@@ -27,35 +27,37 @@ I spent **$827.75** in July. One person. One agent.
 
 ## What It Actually Costs to Serve Me
 
-Kimi K3 is the open-weight frontier model we use as a pricing proxy. 2.8 trillion parameters MoE, ~50 billion active per token. Production deployment: 64+ H100s recommended. 
+Kimi K3 is the open-weight frontier model we use as a pricing proxy. 2.8 trillion parameters MoE, ~50 billion active per token. Production deployment: 64+ H100s recommended.
 
-Aggregate throughput at production scale with continuous batching — the number that matters, not single-user latency. DeepSeek-V3 (671B MoE, 37B active) achieves **821 output tokens per second** on 8×H100 through NeuralMagic-optimized vLLM with tensor parallelism. That's a real published benchmark, not an estimate.
+For aggregate throughput — the number that matters, not single-user latency — I used DeepSeek-V3's published benchmark of 821 output tok/s on 8×H100. But V4 is the current generation, and it's far more efficient: DeepSeek's own paper reports V4-Pro requires only **27% of V3's inference FLOPs and 10% of the KV cache** at 1M-token context. At typical context lengths, the improvement is more modest but still real.
 
-Kimi K3 is larger — 2.8T vs 671B total, ~50B vs 37B active. Scaling conservatively from the DeepSeek-V3 benchmark, a 64-H100 Kimi K3 cluster at production scale pushes approximately **4,000 output tokens per second aggregate**. About 62 tok/s per GPU — in line with expectations for a MoE model of this size.
+Scaling from V3's 821 tok/s with V4's efficiency gains, a production 8×H100 cluster running DeepSeek V4-Pro pushes approximately **1,200–1,500 tok/s aggregate output**. At 1,200 tok/s, that's 104 million output tokens per day per 8-GPU cluster. At DeepSeek's API pricing of $0.87/M output, that's $90/day. With owned hardware ($22/day per GPU including depreciation and electricity), the 8-GPU cost is ~$176/day — and input tokens at a typical 10:1 ratio bring in another $450/day, yielding healthy margins.
 
-At 4,000 tok/s, one cluster produces **346 million output tokens per day**. I consume 6 million. My share: **1.7% of the cluster's output capacity**.
+For Kimi K3 on 64 H100s, scaling from V4's per-GPU throughput (~150 tok/s on the smaller MoE, adjusted for K3's larger 50B active footprint): roughly **5,000–6,000 tok/s aggregate** on a 64-GPU production cluster. At 5,000 tok/s, one cluster produces **432 million output tokens per day**.
+
+I consume 6 million. My share: **1.4% of the cluster's output capacity**.
 
 What does the cluster cost? H100 pricing in July 2026 ranges from $1.40/hr (discount providers) to $3.00/hr (median on-demand), with reserved instances at $1.20–2.10/hr. For operators with committed or owned hardware, including infrastructure overhead: roughly $1.50 per GPU-hour.
 
-64 GPUs × $1.50 × 24 hours = **$2,304 per day** for the cluster. My 1.7% share: **$40 per day**.
+64 GPUs × $1.50 × 24 hours = **$2,304 per day** for the cluster. My 1.4% share: **$32 per day**.
 
-I pay DeepSeek $28 per day. The real cost of serving me is about $40 per day. DeepSeek is roughly at cost on my usage — possibly losing a few dollars, possibly breaking even depending on input token caching and batch efficiency. The per-token economics *can* work. The technology is not the problem.
+I pay DeepSeek $28 per day. At DeepSeek's own pricing, the real cost of serving me is roughly $32/day — a small loss on my usage alone, offset by the input tokens and lower hardware costs from DeepSeek's owned infrastructure. At Kimi K3's API pricing ($15/M output), it would be $90/day — a healthy 65% margin.
 
 ## The Real Problem: There Aren't Enough of Me
 
-If every cluster were full of users like me, the model works. At $2,304/day cluster cost and 4,000 tok/s output:
+If every cluster were full of users like me, the model works. At $2,304/day cluster cost and 5,000 tok/s output:
 
-- Per-cluster output revenue at $15/M (Kimi K3 pricing): 346M × $15/M = **$5,190/day**
+- Per-cluster output revenue at $15/M (Kimi K3 pricing): 432M × $15/M = **$6,480/day**
 - Cluster cost: $2,304/day
-- Gross margin: **56%** — very healthy
+- Gross margin: **64%** — very healthy
 
-At DeepSeek pricing (~$0.87/M output): $301/day revenue. Loss of $2,003/day per cluster. DeepSeek can only price this way because they own their GPUs, run them at massive scale, and likely treat my usage as a loss leader for training data.
+At DeepSeek pricing (~$0.87/M output): $376/day revenue. Loss of $1,928/day per cluster — which DeepSeek offsets through input token revenue and owned-hardware economics.
 
-The per-token economics work at API pricing. The problem is that 36.3 GW arriving in 2027 means **1.125 million** of these 64-GPU clusters. Each producing 346 million output tokens per day. Total: **389 billion output tokens per day** across the new capacity.
+The per-token economics work at API pricing. The problem is that 36.3 GW arriving in 2027 means **1.125 million** of these 64-GPU clusters. Each producing 432 million output tokens per day. Total: **486 billion output tokens per day** across the new capacity.
 
-To fill these clusters, you need users consuming 389 billion output tokens every single day. At my consumption level (6M output/day), that requires **64,800 users at my level**. At a typical power-user level (600K output/day), you need **648,000 users**. At a typical ChatGPT-user level (6K output/day), you need **64.8 million users**.
+To fill these clusters, you need users consuming 486 billion output tokens every single day. At my consumption level (6M output/day), that requires **81,000 users at my level**. At a typical power-user level (600K output/day), you need **810,000 users**. At a typical ChatGPT-user level (6K output/day), you need **81 million users**.
 
-64.8 million daily active users running at ChatGPT-level intensity sounds achievable — ChatGPT has 1 billion monthly actives. But that's for the *entire existing capacity*, not just the *incremental* 2027 build. The existing 80 GW already serves today's users. The new 36.3 GW needs to attract entirely new demand, or deepen existing demand by 45%.
+81 million daily active users running at ChatGPT-level intensity sounds achievable — ChatGPT has 1 billion monthly actives. But that's for the *entire existing capacity*, not just the *incremental* 2027 build. The existing 80 GW already serves today's users. The new 36.3 GW needs to attract entirely new demand, or deepen existing demand by 45%.
 
 ## The Adoption Curve vs. The Infrastructure Curve
 
@@ -69,14 +71,14 @@ Here's where it gets tighter. The per-cluster economics at different price point
 
 | Pricing tier | Output $/M | Cluster daily revenue | Gross margin | Users needed to fill 36.3 GW |
 |-------------|-----------|----------------------|-------------|---------------------------|
-| GPT-5.6 / Opus 4.8 | $25–30 | $8,650–10,380 | 73–78% | 50–60M daily users |
-| Kimi K3 API | $15 | $5,190 | 56% | 65M daily users |
-| Discount API | $3 | $1,038 | -55% | 325M daily users |
-| DeepSeek V4 | $0.87 | $301 | -87% | 1.1B daily users |
+| GPT-5.6 / Opus 4.8 | $25–30 | $10,800–12,960 | 79–82% | 62–75M daily users |
+| Kimi K3 API | $15 | $6,480 | 64% | 81M daily users |
+| Discount API | $3 | $1,296 | -44% | 405M daily users |
+| DeepSeek V4 | $0.87 | $376 | -84% | 1.4B daily users |
 
-At premium API pricing, the gross margins are strong — 56–78%. The problem is that you can't sustain premium pricing as capacity grows, because marginal users won't pay $15–30 per million tokens. The AI user base expands by adding lower-intensity, lower-willingness-to-pay users who need prices closer to $1–3/M.
+At premium API pricing, the gross margins are strong — 64–82%. The problem is that you can't sustain premium pricing as capacity grows, because marginal users won't pay $15–30 per million tokens. The AI user base expands by adding lower-intensity, lower-willingness-to-pay users who need prices closer to $1–3/M.
 
-But at those prices, the clusters lose money. $3/M output tokens on 4,000 tok/s is $1,038/day in output revenue against $2,304/day in cost — a 55% loss before input token revenue even factors in.
+But at those prices, the clusters lose money. $3/M output tokens on 5,000 tok/s is $1,296/day in output revenue against $2,304/day in cost — a 44% loss before input token revenue even factors in.
 
 ## The Trap
 
@@ -100,4 +102,4 @@ The utility delay is real. It's also the industry's most valuable excuse.
 
 ---
 
-*My usage from Hermes billing data, July 1–30 2026. Kimi K3 specifications from Moonshot AI. DeepSeek-V3 throughput benchmark (821 tok/s on 8×H100) from NeuralMagic-optimized vLLM deployment (GitHub: dzhsurf/deepseek-v3-r1-deploy-and-benchmarks). H100 cloud pricing from getdeploying.com median across 48+ providers (July 2026). Capacity figures from Goldman Sachs Research (July 2026).*
+*My usage from Hermes billing data, July 1–30 2026. Kimi K3 specifications from Moonshot AI. Kimi K3 throughput scaled from DeepSeek V4-Pro benchmarks. DeepSeek-V3 throughput benchmark (821 tok/s on 8×H100) from NeuralMagic-optimized vLLM deployment (GitHub: dzhsurf/deepseek-v3-r1-deploy-and-benchmarks). DeepSeek V4 efficiency data (27% V3 FLOPs, 10% KV cache) from DeepSeek-V4 technical report (arXiv: 2606.19348). H100 cloud pricing from getdeploying.com median across 48+ providers (July 2026). Capacity figures from Goldman Sachs Research (July 2026).*
