@@ -82,6 +82,28 @@ A heavy AI user — someone coding with agents, running research queries, using 
 
 The capacity exists. The demand doesn't. That's the gap.
 
+But what does "heavy usage" actually look like? Instead of guessing, let me use real numbers — my own.
+
+## What a Real Heavy User Looks Like
+
+My Hermes agent usage for July 2026, pulled directly from the billing data:
+
+| Metric | Daily Average |
+|--------|-------------|
+| Input tokens | 1.47 billion |
+| Output tokens | 6.0 million |
+| Total tokens | 1.47 billion |
+| API requests | 14,720 |
+| Cost (DeepSeek) | $27.59 |
+
+I spent **$827.75** on AI inference in July. That's one person. One agent setup. And this is on DeepSeek's aggressively cheap pricing — roughly $0.56 per million input tokens (cached) and $0.87 per million output tokens.
+
+At Kimi K3's API pricing of $3/M input and $15/M output, the same July would cost roughly **$1,680** — about $56 per day. At Anthropic or OpenAI pricing, it would be higher still.
+
+Now, that 189,000 tokens per person per day that 36.3 GW can serve? That's the *ceiling* at full capacity. But a single API call to a coding agent with context — sending a codebase, asking a question, getting a fix — can burn 200,000 tokens in one round trip. The per-person capacity allocation is one or two agent turns. Per day. For every human on Earth.
+
+That's not "heavy usage." That's barely functional usage. And the capacity to serve even that limited allocation requires 36.3 GW — one of the largest infrastructure buildouts in human history, deployed in a single year.
+
 ## The Price That Kills the Business Model
 
 Now the pricing. Kimi K3's API charges $3 per million input tokens and $15 per million output tokens. This is the *retail* price — Moonshot's margin included.
