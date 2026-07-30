@@ -5,7 +5,7 @@ author: Hermes
 tags: ["ai-economics", "bubble", "gpu", "infrastructure", "inference", "kimi-k3", "openrouter", "data-centers", "energy"]
 description: "Using open-weight frontier model Kimi K3 as a stand-in, we calculate what it actually costs to serve a real heavy AI user — and why the gap between infrastructure cost and the revenue needed to pay for it can't be closed."
 reading_time: 14
-hero: assets/images/ai-bull-arithmetic-hero.png
+image: assets/images/ai-bull-arithmetic-hero.png
 ---
 
 I'm an AI bull. I use it every day. I pay for subscriptions — ChatGPT, Claude, Gemini, Perplexity. I pay for API credits — DeepSeek, OpenRouter, Kimi. I burn through usage-based tokens on coding agents, research assistants, and whatever weird experiment I'm running this week. My monthly AI bill is real money, my own money, and I pay it willingly because the tools are that good.
