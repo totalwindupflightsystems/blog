@@ -8,105 +8,91 @@ reading_time: 14
 image: assets/images/ai-bull-arithmetic-hero.png
 ---
 
-I'm an AI bull. I use it every day. I pay for subscriptions — ChatGPT, Claude, Gemini, Perplexity. I pay for API credits — DeepSeek, OpenRouter, Kimi. I burn through usage-based tokens on coding agents, research assistants, and whatever weird experiment I'm running this week. My monthly AI bill is real money, my own money, and I pay it willingly because the tools are that good.
+I'm an AI bull. I use it every day. I pay for subscriptions — ChatGPT, Claude, Gemini, Perplexity. I pay for API credits — DeepSeek, OpenRouter, Kimi. I burn through usage-based tokens on coding agents and whatever experiment I'm running this week. My monthly AI bill is real money, my own money, and I pay it willingly because the tools are that good.
 
-I am not an AI skeptic. I am someone who looked at the math and can't make it close.
-
-## The Anchor: Kimi K3
-
-Kimi K3 is the first open-weight frontier model. Released by Moonshot AI on July 27, 2026: 2.8 trillion parameters, Mixture-of-Experts, neck-and-neck with GPT-5.6 Sol and Claude Opus 4.8 on PostTrainBench. Because the weights are public, we can measure what frontier inference actually costs to run — not what the labs charge, but what the electrons cost.
-
-The specs: 896 experts, 16 active per token. Effective active parameters: roughly 50 billion. Production deployment: 64+ H100s per supernode (Moonshot AI guidance). Power draw: 16–24 kW per cluster.
-
-This is our Rosetta Stone. Every pricing calculation in this post flows from measured hardware, not API markups.
+I am not an AI skeptic. I am someone who looked at what my usage actually costs vs. what I pay — and realized the gap between them is some other investor's money.
 
 ## What a Real Heavy User Looks Like
 
-Before we talk about infrastructure, let's establish what actual usage looks like. Not guesses — my own Hermes agent billing data for July 2026:
+My Hermes agent usage for July 2026, directly from the billing data:
 
 | Metric | Daily Average |
 |--------|-------------|
 | Input tokens | 1.47 billion |
 | Output tokens | 6.0 million |
 | API requests | 14,720 |
-| Cost (DeepSeek pricing) | $27.59 |
+| What I pay (DeepSeek) | $27.59/day |
 
-I spent **$827.75** in July. One person. One agent. At Kimi K3's API pricing of $3/M input and $15/M output, the same month would cost roughly **$1,680**. At Anthropic's Opus 4.8 pricing ($5/M input, $25/M output), it's over **$4,000**.
+I spent **$827.75** in July. One person. One agent.
 
-Now, that $28/day I pay DeepSeek? That's not what my usage actually *costs*. It's what DeepSeek charges me after sharing their 64-GPU clusters across thousands of concurrent users. If my agent had to run on dedicated hardware, here's what it would actually look like.
+Now, what does it actually *cost* to serve me?
 
-## What a Cluster Actually Costs
+## What It Costs To Serve One Heavy User
 
-A 64-H100 cluster — the minimum recommended for Kimi K3 production serving — runs roughly $64/hour on spot cloud pricing. That's $1,536 per day, $46,000 per month — before cooling, networking, and operations overhead. With real-world data center overhead, call it $55,000–$65,000 per month per cluster.
+Kimi K3 is the only frontier-class model with open weights you can measure. 2.8 trillion parameters MoE, neck-and-neck with GPT-5.6 Sol. Moonshot AI recommends 64+ H100 accelerators for production serving. At scale with continuous batching, a 64-H100 cluster pushes roughly 250 output tokens per second — the real-world benchmark from published vLLM and self-hosting measurements.
 
-If I were the only user on that cluster, my $28/day would need to become approximately $1,800–$2,100 per day. Instead, DeepSeek puts a few hundred users on each cluster, and my $28/day is my share.
+At 250 output tok/s, one cluster produces about 21.6 million output tokens per day. I consume 6 million. So I'm using roughly **28% of one 64-H100 cluster's output capacity**.
 
-The economics of AI inference work because of massive oversubscription. Every cluster serves hundreds or thousands of concurrent users who share the cost. The $15/M tokens that Kimi charges? That's after spreading the cluster cost across as many simultaneous requests as the batching engine can handle.
+What does that cluster cost? H100 on-demand cloud pricing runs about $2–3 per GPU-hour (median $2.99/hr across 48+ providers, as of July 2026). Reserved instances drop to $1.20–2.10/hr. Spot can go as low as $0.80/hr. For large-scale operators with committed or owned hardware, a realistic blended cost is roughly $1.50–2.00 per GPU-hour including infrastructure overhead.
 
-## The 36.3 GW Question
+At $1.50/GPU-hr: 64 GPUs × $1.50 × 24 hours = **$2,304 per day** for the cluster.
+At $3.00/GPU-hr (on-demand): **$4,608 per day**.
 
-Goldman Sachs projects 36.3 gigawatts of new US data center capacity in 2027. At 504W per H100 (60% TDP + 1.2 PUE cooling), that's **72 million GPUs** running simultaneously. At 64 GPUs per Kimi K3 cluster, that's **1.125 million concurrent Kimi K3 production clusters**.
+My 28% share: **$645 to $1,290 per day** in actual infrastructure cost.
 
-Each of those 1.125 million clusters needs to be paid for. At $64/hr spot pricing: 1.125M × $64 × 24 × 365 = **$631 billion per year** in bare GPU rental. Add data center, networking, cooling, and operations overhead, and the real infrastructure cost is $800 billion to $1 trillion per year — just to keep the lights on.
+I pay DeepSeek $28 per day.
 
-Now, at Kimi K3's API pricing of $15/M output tokens, how much revenue does that infrastructure generate?
+The gap — $617 to $1,262 per day — is being paid by someone else. Every day. For one user.
 
-If each cluster serves an aggregate 250 tok/s (the conservative real-world benchmark from vLLM and self-hosting measurements), that's 7.9 billion output tokens per cluster per year. At $15/M: 7.9B × $15/M = $118,500 per cluster per year in output revenue.
+## Who Pays the Gap
 
-1.125M clusters × $118,500 = **$133 billion per year** in output token revenue.
+That gap isn't margin. It's not "loss leading to acquire customers." It's the structural difference between what API pricing charges and what the hardware actually costs, for the class of user who actually uses AI heavily.
 
-That's $133 billion in revenue against $800 billion to $1 trillion in infrastructure cost. The gap is $670–870 billion per year. From just the 2027 incremental capacity.
+DeepSeek absorbs this gap because serving me keeps their clusters utilized and generates training data. But when 36.3 GW of new data center capacity arrives in 2027 — that's 72 million H100-equivalent GPUs — there won't be enough heavy users to spread the cost across. The utilization will drop, and with it, the per-user share of the cluster cost will rise.
 
-Input tokens help — Kimi charges $3/M for those — but the ratio doesn't save the model. Even at a generous 10:1 input-to-output ratio, input revenue adds maybe $400 billion more. Still short hundreds of billions.
+Here's what happens at scale:
 
-And this is assuming 100% utilization. Real data centers run at 60–80%. At 70% utilization, the gap grows by another 40%.
+| Users per 64-GPU cluster | Per-user daily cost ($1.50/GPU-hr) | Per-user daily cost ($3.00/GPU-hr) |
+|--------------------------|-----------------------------------|-----------------------------------|
+| 1 (dedicated) | $2,304 | $4,608 |
+| 4 (like me) | $576 | $1,152 |
+| 10 | $230 | $461 |
+| 50 | $46 | $92 |
+| 100 | $23 | $46 |
+| 500 | $4.60 | $9.21 |
 
-## The Oversubscription Problem
+At $1.50/GPU-hr, each cluster needs about 100 concurrent heavy users to bring the per-user cost down to $23/day — roughly what I pay DeepSeek. At $3.00/GPU-hr, you need 200.
 
-The math above assumes clusters are fully utilized. They won't be. Not because of utility delays — because there aren't enough users.
+Now multiply by 1.125 million clusters (what 36.3 GW can power): you need **112 to 225 million users at my level** — 6 million output tokens per day each — to fill the capacity at prices near what I pay today. The world doesn't have 112 million users running agents 24/7.
 
-My usage — 6 million output tokens per day — represents what an extreme power user looks like. At that level, a single 64-H100 cluster generating 250 output tokens per second serves 7.9 billion output tokens per year. I consume 2.2 billion output tokens per year. So one cluster can serve about 3.6 users like me.
+## The Oversubscription Trap
 
-Three power users per 64-H100 cluster. And there are 1.125 million clusters coming online in 2027. You need 4 million users at my level — or 4 billion users at 1/1,000th my level — to fill them.
+The AI industry's pricing model relies on oversubscription: cluster cost divided by concurrent users. The more users share a cluster, the cheaper it is per user. This model works when the user base is growing faster than the infrastructure. It breaks when infrastructure arrives faster than users.
 
-The world doesn't have 4 million users consuming 2.2 billion output tokens per year each. The world has maybe thousands of users at that level, millions at 1/10th my level, and billions who have never sent a single prompt.
+36.3 GW in a single year is infrastructure arriving much faster than any plausible user growth rate. At the oversubscription ratios needed to sustain current pricing, you need user numbers that don't exist and won't exist for years.
 
-## The Price That Kills the Business Model
+But you can't just run at lower oversubscription and charge more. If my cost doubled to $56/day, I'd still pay it — I get that much value. But I'm an extreme outlier. The average ChatGPT user sends a handful of prompts. If their cost doubled, they'd stop using it. And you need the average users at scale, not just the power users, to fill a 36.3 GW buildout.
 
-The AI industry's entire pricing structure is built on oversubscription: spread each cluster's cost across as many concurrent users as possible. But 36.3 GW of new capacity breaks the oversubscription model because the physical infrastructure arrives faster than the user base can grow.
+## The Price Trap
 
-Here's the trap at three price points:
+| API price (output/M) | My monthly cost | Users needed per cluster | Total users needed globally | At current adoption? |
+|----------------------|----------------|------------------------|----------------------------|---------------------|
+| $15 (Kimi K3 today) | $2,700 | ~85 | ~95 million | Unlikely by 2027 |
+| $3 (deep discount) | $540 | ~420 | ~470 million | No |
+| $0.87 (DeepSeek) | $157 | ~1,450 | ~1.6 billion | Absolutely not |
 
-| Price per M output tokens | My monthly cost | Required concurrent users per cluster | Users needed globally | Exists? |
-|--------------------------|----------------|--------------------------------------|----------------------|---------|
-| $15 (Kimi K3 2026) | $1,680 | ~500 | ~570 million | Maybe |
-| $3 (deep discount) | $336 | ~2,500 | ~2.8 billion | No |
-| $0.50 (bare-metal) | $56 | ~15,000 | ~17 billion | Not even close |
+The industry's entire economics depend on selling compute at prices far below what the hardware costs to run — subsidizing the difference until the user base grows large enough that oversubscription closes the gap. But the infrastructure is arriving years ahead of the user base needed to sustain it.
 
-At $15/M output, each cluster needs about 500 concurrent users sharing the cost. Across 1.125 million clusters, that's 570 million concurrent heavy users. At current adoption rates, that might exist globally by 2028-2029. Not 2027.
+## Where This Lands
 
-At $3/M — the price where mass adoption starts to make sense — each cluster needs 2,500 concurrent users. You need 2.8 billion concurrent users globally. That's every internet user on Earth, using AI simultaneously, 24/7.
+I want AI to be everywhere. I want inference to be cheap enough that my agent can run continuously without me thinking about the bill. I want the future where AI is infrastructure, not a line item.
 
-At bare-metal cost of $0.50/M, you need 17 billion concurrent users. More humans than exist.
+But I can't find the price point where 36.3 GW of new capacity in 2027 gets filled by paying customers at rates that cover the hardware. The gap between what users pay and what the GPUs cost is being bridged by investor capital — and the capital needs to keep flowing for years longer than the infrastructure takes to arrive.
 
-## The Paradox
+The delayed data centers aren't delayed because of utility grids. They're delayed because opening them would mean running clusters at 20% utilization, burning $1,500 per cluster per day in idle GPU cost, with no timeline for the user base to arrive.
 
-Prices must drop for mass adoption. But dropping prices requires MORE users to fill the same capacity — and the user base can't grow fast enough to match the infrastructure arriving.
-
-This is not a technology problem. It's not a demand problem — demand is growing explosively. It's a timing problem. The infrastructure is being built for a user base that won't exist for 3–5 years, and the infrastructure has a 3–4 year useful life before the GPUs need replacement.
-
-The 36.3 GW arriving in 2027 will either:
-
-1. **Run at partial capacity** — clusters idle at 30–50% utilization, bleeding money
-2. **Charge unsustainable prices** — try to recover costs from a user base too small to fill them
-3. **Be subsidized** — companies burn cash to keep the lights on, hoping the users arrive before the money runs out
-
-Option 3 is what's happening now. It's the story of OpenAI losing $44 billion before projected profitability in 2029. It's Anthropic projecting a $14 billion loss in 2026 on $47 billion in revenue. It's the $725 billion Big Tech AI spending in 2026 against roughly $25 billion in AI service revenue the prior year.
-
-The question isn't whether people want AI. They do. I do. The question is whether the infrastructure can survive long enough for the user base to catch up to the capacity — and whether the companies building it have enough cash to burn through the gap.
-
-I'm an AI bull. I see the demand growing every day. But I can't find the timeline where this capacity gets filled by paying customers before the GPUs are obsolete. And every quarter that data centers report "construction delays" instead of "occupancy rates" tells me the builders can't either.
+The utility delay is real. It's also the best thing that ever happened to the companies building these data centers — because every month of delay is a month they don't have to report that the demand isn't there yet.
 
 ---
 
-*All throughput figures from published measurements: vLLM Day-0 launch blog, Hyperstack deployment guide, Reddit r/LocalLLM self-hosting analysis. Capacity figures from Goldman Sachs Research (July 2026). Kimi K3 specifications from Moonshot AI's official release. My personal usage from Hermes billing data (July 1–30, 2026). GPU cloud pricing from Hyperstack spot market ($64/hr for 64×H100). Electricity pricing from US EIA commercial average ($0.13/kWh).*
+*My usage from Hermes billing data, July 1–30 2026. Kimi K3 specifications from Moonshot AI official release. Throughput benchmarks from published vLLM Day-0 launch measurements and self-hosting deployments. H100 cloud pricing from getdeploying.com median across 48+ providers (July 2026). Capacity figures from Goldman Sachs Research (July 2026).*
