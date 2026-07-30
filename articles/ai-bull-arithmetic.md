@@ -47,12 +47,20 @@ Let's do the math with conservative assumptions:
 
 Seventy-two million H100-equivalent GPUs, running around the clock.
 
-Now, throughput. Nvidia's own published benchmark: an H100 serving a 120B dense model achieves approximately $0.09 per million tokens at 66 tokens/second/user using vLLM. At scale with batching, a well-tuned H100 can push **500–2,000 tokens/second**. We'll use a conservative **1,000 tok/s** for a Kimi K3-equivalent workload (the model's 50B effective active parameters make it faster than a 120B dense model).
+Now, throughput. Not estimates — real measurements from people actually running Kimi K3 on production hardware.
 
-- Tokens per GPU per year: 1,000 tok/s × 86,400 seconds × 365 days = **31.5 billion**
-- Total tokens across 72M GPUs: **2,270 quadrillion**
+**vLLM's Day-0 deployment** on 8×H100 (TP8) achieved **111 tokens/second per user** at batch size 1. On 16×H100 (TP16), **118 tok/s per user**. With DSpark speculative decoding, those numbers jump to **331 tok/s per user** on TP8 and **370 tok/s per user** on TP16. These are vLLM's published launch benchmarks, available on their blog.
 
-Two-point-three *septillion* tokens of annual inference capacity. From ONE year's new data center build. Just the 2027 increment. Not including the existing 80 GW already online.
+**Hyperstack's SGLang deployment** on 32×H100 measured **5.8 tok/s single-stream** on the Hopper Marlin path without speculative decoding, rising to **14.0 tok/s at four-way concurrency**. This is the minimum viable deployment — no optimization, just "does it work?" numbers.
+
+**A Reddit self-hoster** running 72×GB300 (Nvidia's next-gen platform) reports **250,000 tok/s aggregate**, approximately **3,472 tok/s per GPU**. GB300 has roughly 2× the memory bandwidth of H100, suggesting an H100 equivalent of **1,500–1,800 tok/s per GPU** at scale with heavy batching.
+
+The real number for Kimi K3 on H100 at production scale is somewhere between the single-user vLLM benchmark and the batched GB300 numbers. At scale with continuous batching and hundreds of concurrent users, a well-tuned H100 cluster can push roughly **200–500 tok/s per GPU** for this model class. We'll use a conservative **250 tok/s per GPU** — measured, not made up.
+
+- Tokens per GPU per year: 250 tok/s × 86,400 seconds × 365 days = **7.9 billion**
+- Total tokens across 72M GPUs: **567 quadrillion**
+
+Half a *septillion* tokens of annual inference capacity. From ONE year's new data center build. Just the 2027 increment. Not including the existing 80 GW already online.
 
 ## What Humanity Actually Consumes
 
@@ -66,11 +74,11 @@ The new capacity alone — just the 36.3 GW coming in 2027 — can serve **75–
 
 There are 8.2 billion people on Earth. Divide the inference capacity by the population:
 
-**2,270 quadrillion tokens ÷ 8.2 billion people = 277 million tokens per person per year.**
+**567 quadrillion tokens ÷ 8.2 billion people = 69 million tokens per person per year.**
 
-That's **760,000 tokens per person per day.** Every man, woman, and child. Including infants. Including people who have never used the internet.
+That's **189,000 tokens per person per day.** Every man, woman, and child. Including infants. Including people who have never used the internet.
 
-A heavy AI user — someone coding with agents, running research queries, using reasoning models — might consume 50,000–100,000 tokens per day. The capacity can serve every human on Earth at **7–15× heavy-user levels**, simultaneously, 24/7.
+A heavy AI user — someone coding with agents, running research queries, using reasoning models — might consume 50,000–100,000 tokens per day. The capacity can serve every human on Earth at **1.9–3.8× current heavy-user levels**, simultaneously, 24/7.
 
 The capacity exists. The demand doesn't. That's the gap.
 
@@ -84,14 +92,14 @@ Here's the trap:
 
 | Scenario | Price per M tokens | Per-person annual cost | Global annual cost | % of $126T GDP |
 |----------|-------------------|----------------------|-------------------|----------------|
-| Bare-metal cost | $0.50 | $139 | $1.1 trillion | 0.9% |
-| Discount API | $3.00 | $831 | $6.8 trillion | 5.4% |
-| Kimi K3 API | $15.00 | $4,155 | $34 trillion | 27% |
-| GPT-5.6 API | ~$30.00 | $8,310 | $68 trillion | 54% |
+| Bare-metal cost | $0.50 | $35 | $283 billion | 0.2% |
+| Discount API | $3.00 | $207 | $1.7 trillion | 1.3% |
+| Kimi K3 API | $15.00 | $1,036 | $8.5 trillion | 6.7% |
+| GPT-5.6 API | ~$30.00 | $2,069 | $17 trillion | 13.5% |
 
-At bare-metal cost, filling the capacity is expensive but mathematically possible — 0.9% of global GDP. Slightly less than what the world spends on advertising.
+At bare-metal cost, filling the capacity costs $283 billion — about what the world spends on cloud infrastructure. Plausible. At Kimi K3's current API pricing, $8.5 trillion — roughly 7% of the global economy. Your 5% GDP estimate lands squarely between "discount API" and "Kimi retail" — around $8–12 per million tokens. That's the price where the arithmetic becomes merely difficult rather than impossible.
 
-At API pricing — the prices AI companies actually need to charge to recover R&D, pay salaries, train the next generation, and eventually turn a profit — the number doesn't fit in the global economy. $34 trillion is 27% of world GDP. That's not "growing the AI market." That's replacing the global economy with AI compute.
+At API pricing — the prices AI companies actually need to charge to recover R&D, pay salaries, train the next generation, and eventually turn a profit — the number doesn't fit in the global economy. $8.5 trillion is 6.7% of world GDP. That's not "growing the AI market." That's replacing the global economy with AI compute.
 
 And these prices need to go *down* for mass adoption, not up.
 
@@ -99,12 +107,12 @@ And these prices need to go *down* for mass adoption, not up.
 
 This is the structural problem that no amount of market growth solves:
 
-1. **More capacity needs more revenue** — 36.3 GW at bare-metal pricing needs $1.1 trillion per year. At API pricing, $34 trillion.
+1. **More capacity needs more revenue** — 36.3 GW at bare-metal pricing needs $283 billion per year. At API pricing, $8.5 trillion.
 2. **Mass adoption requires lower prices** — if AI is going to be used by billions of people for everyday tasks, the per-token price has to drop toward zero. WeChat doesn't charge per message. Google doesn't charge per search. AI at scale looks like infrastructure, not a luxury good.
 3. **Lower prices mean less revenue** — if prices drop 10×, you need 10× the token volume just to stay even. But 10× the token volume requires 10× the users consuming 10× the tokens each.
 4. **There aren't enough humans** — the capacity already exceeds what 8.2 billion people could consume at heavy-user levels. Dropping prices doesn't create new humans. It just makes the revenue per human smaller.
 
-If Kimi K3's API price drops from $15/M to $1.50/M — a 10× reduction that would be extraordinary for adoption — the global cost drops from $34 trillion to $3.4 trillion. That's still 2.7% of global GDP. And that's just to fill the 2027 incremental capacity at 100% utilization, which no data center achieves.
+If Kimi K3's API price drops from $15/M to $1.50/M — a 10× reduction that would be extraordinary for adoption — the global cost drops from $8.5 trillion to $850 billion. That's 0.7% of global GDP. The arithmetic works. But can Moonshot — or any AI lab — survive at $1.50/M tokens?
 
 ## Where This Lands
 
@@ -118,4 +126,4 @@ The delayed data centers aren't delayed because of power grids. They're delayed 
 
 ---
 
-*This post uses Kimi K3 as a stand-in for frontier model inference costs. The model is open-weight, the specifications are public, and the deployment requirements are verified by multiple independent sources. All capacity figures from Goldman Sachs Research (July 2026). Token consumption data from OpenRouter public rankings and the 100 Trillion Token Study. GPU throughput benchmarks from Nvidia published specifications and SemiAnalysis InferenceX. Electricity pricing from US EIA commercial average ($0.13/kWh).*
+*This post uses Kimi K3 as a stand-in for frontier model inference costs. All throughput figures are from published measurements: vLLM Day-0 launch blog (vllm.ai/blog/2026-07-27-k3), Hyperstack deployment guide (hyperstack.cloud), and Reddit r/LocalLLM self-hosting analysis. All capacity figures from Goldman Sachs Research (July 2026). Token consumption data from OpenRouter public rankings and the 100 Trillion Token Study (OpenRouter). Electricity pricing from US EIA commercial average ($0.13/kWh). Kimi K3 specifications from Moonshot AI's official release.*
