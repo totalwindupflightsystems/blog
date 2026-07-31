@@ -86,6 +86,17 @@ function refreshPostMeta() {
   const metaEl = document.querySelector('.post-meta');
   const tagsEl = document.querySelector('.post-tags');
   if (titleEl) titleEl.textContent = article.title;
+  // Backfill hero image if it wasn't rendered (manifest loaded after first render)
+  if (article.image && !document.querySelector('.post-hero')) {
+    const heroSrc = article.image.startsWith('http') ? article.image
+      : article.image.startsWith('assets/') ? `${BASE}/assets/${article.image.slice(7)}`
+      : `${BASE}/${article.image.replace(/^\//, '')}`;
+    const hero = document.createElement('img');
+    hero.src = heroSrc;
+    hero.alt = article.title;
+    hero.className = 'post-hero';
+    titleEl?.before(hero);
+  }
   if (metaEl) {
     const date = fmtDate(article.date);
     metaEl.innerHTML = `<span>${date}</span>` + (article.author ? `<span>·</span><span>${esc(article.author)}</span>` : '');
