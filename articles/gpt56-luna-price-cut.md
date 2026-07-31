@@ -8,7 +8,7 @@ reading_time: 10
 image: assets/images/gpt56-luna-price-cut-hero.png
 ---
 
-*Note: This post was written July 30, 2026, the same day OpenAI announced the cuts. DeepSeek V4 Flash had recently gone GA (July 15–20) at $0.14/$0.28 per million tokens — pricing that makes even the new Luna rates look expensive. It's unclear whether OpenAI was responding specifically to Flash's GA pricing, or to the broader pressure from Kimi K3 and the open-weight ecosystem that Flash's launch crystallized. Both forces point in the same direction.*
+*Note: This post was written July 30, 2026, the same day OpenAI announced the cuts. Hours later, on July 31, DeepSeek put V4 Flash into public beta at $0.14/$0.28 per million tokens — pricing that makes even the new Luna rates look expensive. OpenAI was responding to the broader pressure from DeepSeek V4 Pro, Kimi K3, and the open-weight ecosystem. DeepSeek responded to OpenAI's response by dropping an even bigger bomb. The price war isn't settling — it's accelerating.*
 
 OpenAI cut prices on GPT-5.6 today. Luna dropped 80%. Terra dropped 20%. Sol — the top model, the flagship, the reasoning model that benchmarks at the frontier — didn't move.
 
