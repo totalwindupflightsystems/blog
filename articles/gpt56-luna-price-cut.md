@@ -24,15 +24,15 @@ But the real story isn't today's cuts. It's what happened in the two years leadi
 
 OpenAI has been pushing budget model prices UP for two years. Each generation was more expensive than the last. The argument was always the same: higher intelligence per dollar. Here's the arc:
 
-| Model | Input / 1M | Output / 1M | Era |
-|-------|-----------|------------|-----|
+| Model | Input / 1M | Output / 1M | Year |
+|-------|-----------|------------|------|
 | GPT-4o mini | $0.15 | $0.60 | 2024 |
-| GPT-4.1 mini | $0.40 | $1.60 | Early 2025 |
-| GPT-5 Nano | $0.50 | $2.50 | Late 2025 |
+| GPT-4.1 nano | $0.10 | $0.40 | Early 2025 |
+| GPT-5.4 nano | $0.20 | $1.25 | Early 2026 |
 | GPT-5.6 Luna (launch) | $1.00 | $6.00 | July 9, 2026 |
 | **GPT-5.6 Luna (today)** | **$0.20** | **$1.20** | **July 30, 2026** |
 
-From $0.15 to $1.00 on input — nearly a 7× increase across four generations. Output went from $0.60 to $6.00 — 10×. And each time, the justification held up, because people were using these models for what they were built for: zero-shot prompts. Ask a question. Get an answer. Price per intelligence. It worked.
+From $0.60 to $6.00 on output — a 10× increase across four generations of the budget tier. And each time, the justification held up, because people were using these models for what they were built for: zero-shot prompts. Ask a question. Get an answer. Price per intelligence. It worked.
 
 Then people started using AI agents.
 
