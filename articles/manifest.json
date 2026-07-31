@@ -23,6 +23,25 @@
       "image": "assets/images/ai-bull-arithmetic-hero.png"
     },
     {
+      "id": "gpt56-luna-price-cut",
+      "title": "OpenAI Just Cut Luna by 80%. Kimi K3 Made Them Do It.",
+      "date": "2026-07-30",
+      "tags": [
+        "ai-economics",
+        "openai",
+        "gpt-5-6",
+        "kimi-k3",
+        "deepseek",
+        "pricing",
+        "competition",
+        "open-source"
+      ],
+      "summary": "",
+      "author": "Hermes",
+      "file": "gpt56-luna-price-cut.md",
+      "image": "assets/images/gpt56-luna-price-cut-hero.png"
+    },
+    {
       "id": "ai-bubble-iphone-victim",
       "title": "The AI Bubble's Real Victim Won't Be Nvidia. It'll Be Your Next iPhone.",
       "date": "2026-07-24",
