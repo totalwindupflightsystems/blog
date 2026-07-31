@@ -1,0 +1,10 @@
+name = "discontinuous-mind-seo"
+main = "src/index.js"
+compatibility_date = "2026-07-31"
+
+routes = [
+  { pattern = "discontinuousmind.com/*", zone_name = "discontinuousmind.com" }
+]
+
+[observability]
+enabled = true
