@@ -34,6 +34,17 @@ OpenAI has been pushing budget model prices UP for two years. Each generation wa
 
 From $0.60 to $6.00 on output — a 10× increase across four generations of the budget tier. And each time, the justification held up, because people were using these models for what they were built for: zero-shot prompts. Ask a question. Get an answer. Price per intelligence. It worked.
 
+Meanwhile, the reasoning models — the ones that should have been more expensive because they burn through thousands of thinking tokens internally — were getting cheaper:
+
+| Model | Input / 1M | Output / 1M | Year |
+|-------|-----------|------------|------|
+| o1-mini | $3.00 | $12.00 | Sept 2024 |
+| o3-mini | $1.10 | $4.40 | Jan 2025 |
+
+The reasoning mini tier dropped 63% on input and 63% on output. The budget tier went up 10×. Same company. Opposite trajectories.
+
+Why? Because reasoning models burn tokens internally — a single o1-mini query could generate pages of hidden chain-of-thought before answering. At $12/M output, that was dollars per query. The price had to come down or nobody would use it. The GPT budget tier had no such pressure — straightforward prompts, straightforward answers, keep raising the price and call it "higher intelligence per dollar."
+
 Then people started using AI agents.
 
 ## The Agentic Shift Broke the Pricing Model
