@@ -292,6 +292,7 @@ async function renderPost(app, slug) {
   // Always render post-header — refreshPostMeta() backfills after manifest loads
   const date = article?.date ? fmtDate(article.date) : '';
   h += '<div class="post-header">';
+  if (article?.image) h += `<img src="${esc(article.image)}" alt="${esc(article.title || slug)}" class="post-hero">`;
   h += `<h1 class="post-title">${article?.title ? esc(article.title) : esc(slug)}</h1>`;
   h += '<div class="post-meta">';
   if (date) h += `<span>${date}</span>`;
