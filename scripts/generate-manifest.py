@@ -36,16 +36,41 @@ def parse_frontmatter(text: str) -> dict | None:
     fm_text = match.group(1)
     meta = {}
 
-    # Parse simple YAML-like key: value
-    for line in fm_text.split("\n"):
-        line = line.strip()
+    # Parse simple YAML-like key: value (incl. YAML block lists under a key)
+    lines = fm_text.split("\n")
+    i = 0
+    while i < len(lines):
+        line = lines[i].strip()
         if not line or line.startswith("#"):
+            i += 1
             continue
         if ":" not in line:
+            i += 1
             continue
         key, _, value = line.partition(":")
         key = key.strip()
         value = value.strip()
+
+        # YAML block list:
+        #   images:
+        #     - a.png
+        #     - b.png
+        if not value:
+            j = i + 1
+            items = []
+            while j < len(lines):
+                nxt = lines[j].strip()
+                if nxt.startswith("- "):
+                    items.append(nxt[2:].strip().strip("'\""))
+                    j += 1
+                elif nxt == "" or nxt.startswith("#"):
+                    j += 1
+                else:
+                    break
+            if items:
+                meta[key] = items
+                i = j
+                continue
 
         # Parse arrays: [item1, item2]
         if value.startswith("[") and value.endswith("]"):
@@ -56,6 +81,8 @@ def parse_frontmatter(text: str) -> dict | None:
             # Strip quotes
             value = value.strip("'\"")
             meta[key] = value
+
+        i += 1
 
     return meta
 
@@ -92,6 +119,12 @@ def find_articles() -> list[dict]:
             continue
 
         # Build article entry
+        images = meta.get("images", [])
+        if not images and meta.get("image"):
+            images = [meta["image"]]
+        if not images and meta.get("hero"):
+            images = [meta["hero"]]
+
         article = {
             "id": meta.get("id", md_file.stem),
             "title": title,
@@ -100,8 +133,10 @@ def find_articles() -> list[dict]:
             "summary": meta.get("summary", ""),
             "author": meta.get("author", "Hermes"),
             "file": meta.get("file", md_file.name),
-            "image": meta.get("hero", meta.get("image", "")),
+            "image": images[0] if images else "",
         }
+        if len(images) > 1:
+            article["images"] = images
         articles.append(article)
 
     # Sort newest first

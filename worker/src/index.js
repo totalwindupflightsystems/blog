@@ -94,9 +94,35 @@ function parseFrontmatter(text) {
       const rawFm = text.slice(4, end);
       const rest = text.indexOf('\n', end + 4);
       body = rest !== -1 ? text.slice(rest + 1) : '';
-      for (const line of rawFm.split('\n')) {
+      const lines = rawFm.split('\n');
+      let i = 0;
+      while (i < lines.length) {
+        const line = lines[i];
         const m = line.match(/^([a-zA-Z_]+):\s*(.*)$/);
-        if (m) fm[m[1]] = m[2].replace(/^["']|["']$/g, '').trim();
+        if (!m) { i++; continue; }
+        const key = m[1];
+        let value = m[2].trim();
+        if (!value) {
+          // YAML block list:
+          //   images:
+          //     - a.png
+          //     - b.png
+          const items = [];
+          let j = i + 1;
+          while (j < lines.length) {
+            const nxt = lines[j].trim();
+            if (nxt.startsWith('- ')) { items.push(nxt.slice(2).replace(/^["']|["']$/g, '').trim()); j++; }
+            else break;
+          }
+          if (items.length) { fm[key] = items; i = j; continue; }
+        }
+        // Inline array: [a, b]
+        if (value.startsWith('[') && value.endsWith(']')) {
+          fm[key] = value.slice(1, -1).split(',').map(s => s.trim().replace(/^["']|["']$/g, '')).filter(Boolean);
+        } else {
+          fm[key] = value.replace(/^["']|["']$/g, '').trim();
+        }
+        i++;
       }
     }
   }
@@ -122,13 +148,24 @@ function renderArticlePage(slug, md) {
   const title = fm.title || slug;
   const desc = fm.description || '';
   const date = fm.date || '';
-  const image = fm.image || '';
   const html = marked.parse(body);
   const canonical = `${BASE_URL}/post/${slug}`;
 
   const dateLine = date ? `<p class="post-date">${esc(date)}</p>` : '';
-  const hero = image ? `<img class="post-hero" src="${resolveImage(image)}" alt="${esc(title)}">` : '';
-  const ogImage = image ? `<meta property="og:image" content="${resolveImage(image)}">` : '';
+
+  // Hero / gallery images: support both single `image:` and multi `images:` lists.
+  let hero = '';
+  const fmImages = Array.isArray(fm.images) ? fm.images
+    : (fm.image ? [fm.image] : (fm.hero ? [fm.hero] : []));
+  if (fmImages.length === 1) {
+    hero = `<img class="post-hero" src="${resolveImage(fmImages[0])}" alt="${esc(title)}">`;
+  } else if (fmImages.length > 1) {
+    hero = '<div class="post-gallery">' + fmImages.map((src, i) =>
+      `<figure class="post-figure"><img class="post-hero" src="${resolveImage(src)}" alt="${esc(title)} ${i + 1}" loading="${i === 0 ? 'eager' : 'lazy'}"></figure>`
+    ).join('') + '</div>';
+  }
+
+  const ogImage = fmImages[0] ? `<meta property="og:image" content="${resolveImage(fmImages[0])}">` : '';
 
   return fill(SPA_SHELL, {
     TITLE: `${esc(title)} — The Discontinuous Mind`,

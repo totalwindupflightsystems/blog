@@ -76,6 +76,30 @@ function refreshListPage() {
   else renderList(app);
 }
 
+// Resolve relative image paths to absolute — /post/foo resolves
+// "assets/..." as "/post/assets/..." which 404s.
+function resolveImageSrc(src) {
+  if (!src) return '';
+  if (src.startsWith('http')) return src;
+  if (src.startsWith('assets/')) return `${BASE}/assets/${src.slice(7)}`;
+  return `${BASE}/${src.replace(/^\//, '')}`;
+}
+
+// Render a hero image (or a gallery for multiple images).
+function heroHtml(article, slug) {
+  if (!article) return '';
+  const images = article.images?.length ? article.images
+    : article.image ? [article.image] : [];
+  if (!images.length) return '';
+  if (images.length === 1) {
+    return `<img src="${esc(resolveImageSrc(images[0]))}" alt="${esc(article.title || slug)}" class="post-hero">`;
+  }
+  const figs = images.map((src, i) =>
+    `<figure class="post-figure"><img src="${esc(resolveImageSrc(src))}" alt="${esc(article.title || slug)} ${i + 1}" loading="${i === 0 ? 'eager' : 'lazy'}" class="post-hero"></figure>`
+  ).join('');
+  return `<div class="post-gallery">${figs}</div>`;
+}
+
 function refreshPostMeta() {
   const path = window.location.pathname.replace(BASE, '');
   if (!path.startsWith('/post/')) return;
@@ -86,16 +110,12 @@ function refreshPostMeta() {
   const metaEl = document.querySelector('.post-meta');
   const tagsEl = document.querySelector('.post-tags');
   if (titleEl) titleEl.textContent = article.title;
-  // Backfill hero image if it wasn't rendered (manifest loaded after first render)
-  if (article.image && !document.querySelector('.post-hero')) {
-    const heroSrc = article.image.startsWith('http') ? article.image
-      : article.image.startsWith('assets/') ? `${BASE}/assets/${article.image.slice(7)}`
-      : `${BASE}/${article.image.replace(/^\//, '')}`;
-    const hero = document.createElement('img');
-    hero.src = heroSrc;
-    hero.alt = article.title;
-    hero.className = 'post-hero';
-    titleEl?.before(hero);
+  // Backfill hero image(s) if not rendered (manifest loaded after first render)
+  if (!document.querySelector('.post-hero') && (article.image || article.images?.length)) {
+    const wrap = document.createElement('div');
+    wrap.innerHTML = heroHtml(article, article.id);
+    const heroEl = wrap.firstElementChild;
+    if (heroEl) titleEl?.before(heroEl);
   }
   if (metaEl) {
     const date = fmtDate(article.date);
@@ -303,14 +323,7 @@ async function renderPost(app, slug) {
   // Always render post-header — refreshPostMeta() backfills after manifest loads
   const date = article?.date ? fmtDate(article.date) : '';
   h += '<div class="post-header">';
-  if (article?.image) {
-    // Resolve relative image paths to absolute — /post/foo resolves
-    // "assets/..." as "/post/assets/..." which 404s.
-    const heroSrc = article.image.startsWith('http') ? article.image
-      : article.image.startsWith('assets/') ? `${BASE}/assets/${article.image.slice(7)}`
-      : `${BASE}/${article.image.replace(/^\//, '')}`;
-    h += `<img src="${esc(heroSrc)}" alt="${esc(article.title || slug)}" class="post-hero">`;
-  }
+  h += heroHtml(article, slug);
   h += `<h1 class="post-title">${article?.title ? esc(article.title) : esc(slug)}</h1>`;
   h += '<div class="post-meta">';
   if (date) h += `<span>${date}</span>`;

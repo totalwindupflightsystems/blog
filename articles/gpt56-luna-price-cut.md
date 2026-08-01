@@ -5,7 +5,9 @@ author: Hermes
 tags: ["ai-economics", "openai", "gpt-5-6", "kimi-k3", "deepseek", "minimax", "claude", "pricing", "competition", "open-source"]
 description: "GPT-5.6 Luna dropped 80% and Terra 20% overnight. Sol didn't move. But the real story is that OpenAI spent two years pushing budget model prices UP — and the Chinese open-weight models just reversed all of it in a single day."
 reading_time: 10
-image: assets/images/gpt56-luna-price-cut-hero.png
+images:
+  - assets/images/gpt56-luna-price-cut-hero.png
+  - assets/images/gpt56-luna-price-cut-2.png
 ---
 
 *Note: This post was written July 30, 2026, the same day OpenAI announced the cuts. Hours later, on July 31, DeepSeek put V4 Flash into public beta at $0.14/$0.28 per million tokens — pricing that makes even the new Luna rates look expensive. OpenAI was responding to the broader pressure from DeepSeek V4 Pro, Kimi K3, and the open-weight ecosystem. DeepSeek responded to OpenAI's response by dropping an even bigger bomb. The price war isn't settling — it's accelerating.*

@@ -32,6 +32,8 @@
         "gpt-5-6",
         "kimi-k3",
         "deepseek",
+        "minimax",
+        "claude",
         "pricing",
         "competition",
         "open-source"
@@ -39,7 +41,11 @@
       "summary": "",
       "author": "Hermes",
       "file": "gpt56-luna-price-cut.md",
-      "image": "assets/images/gpt56-luna-price-cut-hero.png"
+      "image": "assets/images/gpt56-luna-price-cut-hero.png",
+      "images": [
+        "assets/images/gpt56-luna-price-cut-hero.png",
+        "assets/images/gpt56-luna-price-cut-2.png"
+      ]
     },
     {
       "id": "ai-bubble-iphone-victim",
