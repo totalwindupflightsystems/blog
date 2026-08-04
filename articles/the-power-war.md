@@ -13,10 +13,11 @@ images:
 
 **The Highlights:**
 - DeepSeek released V4 Flash on July 31 at **$0.14/$0.28** per million tokens — one day after OpenAI cut Luna 80% — with agent benchmarks that beat its own Pro model
+- On July 28, 1,100+ employees of OpenAI, Anthropic, Google DeepMind, and Meta signed a letter asking Washington for a **slowdown switch**. Three days later, DeepSeek shipped a model
 - OpenAI's cuts look like a response to one competitor. The pricing math says they're a response to the whole Chinese stack: chips (Ascend 950PR at 2.8× the H20), memory (HBM now the binding constraint), and open weights (61% of OpenRouter tokens by May)
-- Terra now sits *below* Kimi K3 on price, and undercuts Sonnet 5's promo rate. That's not a discount — that's a permanent repricing of the US tier
+- Terra now sits *below* Kimi K3 on price, and matches Sonnet 5's promo input rate. That's not a discount — that's a permanent repricing of the US tier
 - The real bottleneck has moved: not GPU dies, but **power**. Stargate capped at 1.2 GW. Transformer lead times of 5 years. Interconnection queues of 2,600 GW
-- China is building the same thing without the constraint: DeepSeek's 1 GW Ulanqab buildout, ~10 GW planned in the hub, powered by wind/solar/battery — no export controls, no grid politics
+- China is building the same thing without the constraint: DeepSeek's 1 GW Ulanqab buildout, ~10 GW planned in the hub — no export controls, no grid politics
 - The uncomfortable arithmetic: if American labs can't get power online at the rate the price cuts imply, the price war was the last signal before the lead changes hands
 
 ---
@@ -96,6 +97,18 @@ Meanwhile DeepSeek is building ~1 GW in Ulanqab, Inner Mongolia — one of China
 
 This is the piece that connects the price war to the Nvidia story. If you cut prices 80% to capture volume, you're making a bet: the volume will come, and the power will come, and the memory will come — all at the same time. If any of the three fails, the price cut is just margin destruction. If the power doesn't come, the US labs don't just lose the price war — they lose the iteration race. And the iteration race is the only race that matters, because the Chinese labs are now publishing their frontier models as open weights.
 
+## The Slowdown Letter and the Shipment
+
+On July 28, 2026, more than 1,100 employees across OpenAI, Anthropic, Google DeepMind, and Meta signed a one-sentence open letter called **"Pacing the Frontier"** — asking the US government to support an international effort to build the technical and governance tools to deliberately slow automated AI development.
+
+Three days later, DeepSeek released V4 Flash 0731 into public beta.
+
+Not a press release about a letter. A model. With a native Responses API, Codex compatibility, and agent benchmarks that reportedly beat its own Pro-tier preview — at $0.14/$0.28 per million tokens. Available to anyone on earth with an API key, including every employee who signed that letter.
+
+The asymmetry is not subtle. In the same week that America's four largest labs asked Washington for a slowdown switch, the Chinese labs shipped: DeepSeek V4 Flash (July 31), the Ascend 950DT with 144 GB HBM brought forward to August, and a Qwen family that had already passed one billion cumulative Hugging Face downloads. One side is signing letters about governance tools. The other side is shipping models, chips, and data centers.
+
+Nobody in China is asking for a slowdown switch. They're building the thing the letter is afraid of — and pricing it at $0.14/M so that opting out of it is economically impossible.
+
 ## The Bottom Line
 
 The optimistic reading: OpenAI saw the competitive reality and repriced to win volume while Sol still leads on raw capability. The price cuts are a strategic retreat to defensible ground, and the US retains the frontier.
@@ -105,5 +118,7 @@ The pessimistic reading — and I think the evidence leans here — is that the 
 The market will turn on Nvidia not because investors wake up one morning and decide China won — but because the 75% margin becomes unsustainable the moment the volume it depends on starts pricing against DeepSeek's cost curve. When that happens, the blame will be retroactive: for the prices, for the margins, for the export controls that created the black market, and for the decade of assuming CUDA was a moat instead of a lease.
 
 The question was never whether the US would lose the lead on benchmarks. It's whether the physical supply chain — power first, memory second — can be forced online fast enough to keep the American labs iterating. Every price cut between now and January is a vote on that question. And the clock is the part that can't be repriced.
+
+While that question gets answered, the asymmetry in attention is doing its own work: America's frontier labs are spending July asking Washington for governance tools and slowdown switches, and China is spending July shipping models, chips, and gigawatts. Letters don't ship. Models do.
 
 *Corrections: none yet. This post will be updated as the August pricing moves land.*
