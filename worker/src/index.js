@@ -216,7 +216,8 @@ async function originFetch(path, request) {
   }
   const url = `${ORIGIN}/${rel}`;
   return fetch(url, {
-    headers: { 'accept': request.headers.get('accept') || '*/*' }
+    headers: { 'accept': request.headers.get('accept') || '*/*' },
+    cache: 'no-store' // raw.githubusercontent sends max-age=300; bypass edge cache so new pushes appear instantly
   });
 }
 
@@ -241,7 +242,7 @@ export default {
     if (isBot) {
       // Home page: render article list from manifest
       if (path === '/' || path === '') {
-        const manifestResp = await fetch(`${ORIGIN}/${ARTICLES_DIR}/manifest.json`);
+        const manifestResp = await fetch(`${ORIGIN}/${ARTICLES_DIR}/manifest.json`, { cache: 'no-store' });
         if (manifestResp.ok) {
           const manifest = await manifestResp.json();
           return new Response(renderHomePage(manifest), {
@@ -252,7 +253,7 @@ export default {
 
       // Tags page
       if (path === '/tags') {
-        const manifestResp = await fetch(`${ORIGIN}/${ARTICLES_DIR}/manifest.json`);
+        const manifestResp = await fetch(`${ORIGIN}/${ARTICLES_DIR}/manifest.json`, { cache: 'no-store' });
         if (manifestResp.ok) {
           const manifest = await manifestResp.json();
           const tags = new Map();
@@ -277,7 +278,7 @@ export default {
       const postMatch = path.match(/^\/post\/([^/]+)/);
       if (postMatch) {
         const slug = postMatch[1];
-        const mdResp = await fetch(`${ORIGIN}/${ARTICLES_DIR}/${slug}.md`);
+        const mdResp = await fetch(`${ORIGIN}/${ARTICLES_DIR}/${slug}.md`, { cache: 'no-store' });
         if (mdResp.ok) {
           const md = await mdResp.text();
           return new Response(renderArticlePage(slug, md), {
