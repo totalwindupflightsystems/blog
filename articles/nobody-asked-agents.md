@@ -8,8 +8,6 @@ image: assets/images/nobody-asked-agents-hero.png
 reading_time: 15
 ---
 
-![Two glowing nodes in a dark swarm of geometric particles, connected by a single bright thread of light — the one line of attention in the chaos](/assets/images/nobody-asked-agents-hero.png)
-
 *Published 2026-08-07. This story is developing: OpenAI has promised a full technical report "in the coming weeks," with third-party assessments by CrowdStrike, METR, and Redwood Research pending. All claims below are linked to the primary disclosures — [Hugging Face's July 16 statement](https://huggingface.co/blog/security-incident-july-2026), [OpenAI's July 21 statement](https://openai.com/index/hugging-face-model-evaluation-security-incident/), and the [Black Hat USA 2026 talk](https://youtu.be/87DyyMV0kCY) (August 6). Facts reflect public record as of today.*
 
 # Nobody Asked the Agents How It Was Going
