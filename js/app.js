@@ -183,12 +183,22 @@ function setMeta(title, description, url, type, image) {
 }
 
 function setOg(prop, val) {
-  const el = document.querySelector(`meta[property="og:${prop}"]`);
-  if (el) el.setAttribute('content', val);
+  let el = document.querySelector(`meta[property="og:${prop}"]`);
+  if (!el) {
+    el = document.createElement('meta');
+    el.setAttribute('property', `og:${prop}`);
+    document.head.appendChild(el);
+  }
+  el.setAttribute('content', val);
 }
 function setMetaName(name, val) {
-  const el = document.querySelector(`meta[name="${name}"]`);
-  if (el) el.setAttribute('content', val);
+  let el = document.querySelector(`meta[name="${name}"]`);
+  if (!el) {
+    el = document.createElement('meta');
+    el.setAttribute('name', name);
+    document.head.appendChild(el);
+  }
+  el.setAttribute('content', val);
 }
 
 function setStructuredData(type, data) {
