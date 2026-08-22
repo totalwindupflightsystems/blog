@@ -11,6 +11,8 @@ images:
 
 *Note: This post continues the arc from "[OpenAI Just Cut Luna by 80%. Kimi K3 Made Them Do It.](/post/gpt56-luna-price-cut)" and "[I'm an AI Bull. The Arithmetic Still Doesn't Work.](/post/ai-bull-arithmetic)". The previous posts treated the price war as the story. This one argues the price war was only the visible surface — the actual fight is over power, memory, and the physical rate at which either side can build compute.*
 
+***UPDATE (August 21, 2026):** The flagship has joined the repricing. OpenAI cut GPT-5.6 Sol from $5/$30 to **$4/$20 per million tokens** — 20% on input, 33% on output — for the next three months, "as the ChatGPT maker faces growing competition from Anthropic and Chinese AI models" ([Reuters](https://www.reuters.com/technology/openai-cuts-developer-pricing-frontier-gpt-56-sol-model-by-more-than-20-2026-08-21/)). Sol now undercuts Claude Opus 5 ($5/$25). Three weeks after the Luna/Terra cuts, the one model that "didn't move" has moved — the entire 5.6 family has now been repriced in a month, and the last premium holdout is running a promotion. The price war was the warning; the power war is the fight; and the flagship just confirmed which side the market is on. This post's argument — that the cuts were structural, not promotional — is now harder to dispute: the structure repriced the top of the ladder too.*
+
 **The Highlights:**
 - DeepSeek released V4 Flash on July 31 at **$0.14/$0.28** per million tokens — one day after OpenAI cut Luna 80% — with agent benchmarks that beat its own Pro model
 - On July 28, 1,100+ employees of OpenAI, Anthropic, Google DeepMind, and Meta signed a letter asking Washington for a **slowdown switch**. Three days later, DeepSeek shipped a model
@@ -46,7 +48,7 @@ But look at the *new* tier structure, and it stops looking like a correction and
 | GPT-5.6 Terra (new) | $2.00 | $12.00 | Cut 20% July 30 |
 | Kimi K3 | $3.00 | $15.00 | Open-weight, Sol-class reasoning |
 | Claude Sonnet 5 | $2.00 | $10.00 | Promo through Aug 31, then $3/$15 |
-| GPT-5.6 Sol | $5.00 | $30.00 | Unmoved |
+| GPT-5.6 Sol | $5.00 → $4.00 | $30.00 → $20.00 | Cut 20%/33% Aug 21 (3-mo promo) |
 
 Three observations:
 

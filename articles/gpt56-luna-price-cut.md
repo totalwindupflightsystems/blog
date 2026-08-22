@@ -12,6 +12,8 @@ images:
 
 *Note: This post was written July 30, 2026, the same day OpenAI announced the cuts. Hours later, on July 31, DeepSeek put V4 Flash into public beta at $0.14/$0.28 per million tokens — pricing that makes even the new Luna rates look expensive. OpenAI was responding to the broader pressure from DeepSeek V4 Pro, Kimi K3, and the open-weight ecosystem. DeepSeek responded to OpenAI's response by dropping an even bigger bomb. The price war isn't settling — it's accelerating.*
 
+***UPDATE (August 21, 2026):** The "for now" lasted three weeks. OpenAI cut Sol — the flagship this post said was untouchable — from $5/$30 to **$4/$20** per million tokens for the next three months ([Reuters](https://www.reuters.com/technology/openai-cuts-developer-pricing-frontier-gpt-56-sol-model-by-more-than-20-2026-08-21/)), undercutting Claude Opus 5. The entire 5.6 family has now been repriced in a month. The argument below held that Sol survives at $5/$30 because of bundling and switching costs — and it still does. But the price was always the softest part of the moat, and it just went promotional like everything else.*
+
 OpenAI cut prices on GPT-5.6 today. Luna dropped 80%. Terra dropped 20%. Sol — the top model, the flagship, the reasoning model that benchmarks at the frontier — didn't move.
 
 Here are the new numbers, effective July 30, 2026:
@@ -98,6 +100,8 @@ Sol's moat isn't performance. Kimi K3 matches it on multiple benchmarks. DeepSee
 This is the behavior Bane described: "If you use OpenAI in a mix with other choices, you use Sol and use other models for everything else."
 
 Sol survives at $5/$30 because it's the only model in OpenAI's lineup that still commands a premium. Terra and Luna just became commodity-priced. The entire OpenAI pricing structure now rests on Sol — and the assumption that enterprise switching costs will hold.
+
+*(Update, August 21: the "for now" answered itself — Sol is now $4/$20 for three months. The premium was the first thing to go.)*
 
 ## The Reversal
 
