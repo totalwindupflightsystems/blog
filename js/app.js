@@ -39,11 +39,13 @@ function initTheme() {
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
     update();
+    reThemeCharts();
   });
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
     if (!localStorage.getItem('theme')) {
       document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
       update();
+      reThemeCharts();
     }
   });
 }
@@ -402,6 +404,19 @@ async function renderPost(app, slug) {
 // ---- Media blocks: charts / video / audio ----
 let chartQueue = [];
 const MEDIA_PALETTE = ['#d19a66', '#7aa2f7', '#98c379', '#e06c75', '#c678dd', '#56b6c2', '#e5c07b'];
+let liveCharts = [];
+
+function isDarkTheme() {
+  return document.documentElement.getAttribute('data-theme') === 'dark';
+}
+
+function reThemeCharts() {
+  if (!liveCharts.length) return;
+  for (const c of liveCharts) { try { c.chart.destroy(); } catch (e) {} }
+  const specs = liveCharts.map(c => ({ canvas: c.canvas, spec: c.spec }));
+  liveCharts = [];
+  for (const { canvas, spec } of specs) buildChart(canvas, spec);
+}
 
 function mediaSrc(path) {
   if (!path) return path;
@@ -474,7 +489,12 @@ function flushCharts() {
   if (typeof Chart === 'undefined') { setTimeout(flushCharts, 200); return; }
   while (chartQueue.length) {
     const { canvas, spec } = chartQueue.shift();
-    const dark = spec.dark !== false;
+    buildChart(canvas, spec);
+  }
+}
+
+function buildChart(canvas, spec) {
+    const dark = spec.dark !== undefined ? spec.dark : isDarkTheme();
     const grid = dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.08)';
     const tick = dark ? '#9a9a9a' : '#666666';
     const family = "'Inter', system-ui, sans-serif";
@@ -501,41 +521,43 @@ function flushCharts() {
       if (yFmt === 'compact') return Intl.NumberFormat('en', { notation: 'compact' }).format(v);
       return Number(v).toLocaleString('en-US');
     };
-    new Chart(canvas.getContext('2d'), {
-      type,
-      data: { labels, datasets },
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        aspectRatio: spec.aspectRatio || 2,
-        plugins: {
-          title: {
-            display: !!spec.title,
-            text: spec.title || '',
-            color: tick,
-            font: { family, size: 13, weight: '600' },
-            padding: { bottom: 14 },
+    try {
+      const chart = new Chart(canvas.getContext('2d'), {
+        type,
+        data: { labels, datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: spec.aspectRatio || 2,
+          plugins: {
+            title: {
+              display: !!spec.title,
+              text: spec.title || '',
+              color: tick,
+              font: { family, size: 13, weight: '600' },
+              padding: { bottom: 14 },
+            },
+            legend: {
+              display: spec.legend !== false && datasets.length > 1,
+              labels: { color: tick, boxWidth: 12, boxHeight: 12, font: { family, size: 11 } },
+            },
+            tooltip: {
+              backgroundColor: dark ? 'rgba(15,23,41,0.95)' : 'rgba(255,255,255,0.95)',
+              titleColor: dark ? '#e6e6e6' : '#111',
+              bodyColor: dark ? '#c9c9c9' : '#333',
+              borderColor: dark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)',
+              borderWidth: 1,
+              callbacks: { label: ctx => ' ' + ctx.dataset.label + ': ' + fmt(ctx.parsed.y ?? ctx.parsed) },
+            },
           },
-          legend: {
-            display: spec.legend !== false && datasets.length > 1,
-            labels: { color: tick, boxWidth: 12, boxHeight: 12, font: { family, size: 11 } },
-          },
-          tooltip: {
-            backgroundColor: dark ? 'rgba(15,23,41,0.95)' : 'rgba(255,255,255,0.95)',
-            titleColor: dark ? '#e6e6e6' : '#111',
-            bodyColor: dark ? '#c9c9c9' : '#333',
-            borderColor: dark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)',
-            borderWidth: 1,
-            callbacks: { label: ctx => ' ' + ctx.dataset.label + ': ' + fmt(ctx.parsed.y ?? ctx.parsed) },
-          },
+          scales: (type === 'line' || type === 'bar') ? {
+            x: { ticks: { color: tick, maxTicksLimit: 12, font: { family, size: 10 } }, grid: { color: grid } },
+            y: { ticks: { color: tick, font: { family, size: 10 }, callback: fmt }, grid: { color: grid }, beginAtZero: spec.zero === true },
+          } : {},
         },
-        scales: (type === 'line' || type === 'bar') ? {
-          x: { ticks: { color: tick, maxTicksLimit: 12, font: { family, size: 10 } }, grid: { color: grid } },
-          y: { ticks: { color: tick, font: { family, size: 10 }, callback: fmt }, grid: { color: grid }, beginAtZero: spec.zero === true },
-        } : {},
-      },
-    });
-  }
+      });
+      liveCharts.push({ canvas, spec, chart });
+    } catch (e) { console.warn('Chart render failed:', e); }
 }
 
 // ---- Render: Tags ----
