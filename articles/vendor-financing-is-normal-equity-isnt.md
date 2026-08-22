@@ -80,12 +80,27 @@ The answer, increasingly, is the debt market. US tech companies borrowed **$300 
 
 That's the moment the defenders' story breaks. Vendor financing is normal because it's *boring* — cash, collateral, no ownership, no shared fate. The AI version is none of those things: it's equity, paper revenue, mutual survival, and now mutual debt. Calling it "just vendor deals" is technically true the way "just a car loan" is true of a loan where the lender also owns the car company and books the dealership's sales as revenue.
 
+## The Backstops: Who Eats the Loss
+
+The natural objection is that all of this ignores the industry's backstops — and it deserves an answer, because the backstops are real:
+
+- **The largest balance sheets in history.** Microsoft, Google, Amazon, and Meta together hold hundreds of billions in cash and generate north of $300B/year in operating income. They can fund the loop for years out of earnings. This is not a startup ecosystem running on fumes; it's the most profitable companies ever built.
+- **Real revenue underneath.** ChatGPT passed a billion monthly actives in June 2026. Enterprise AI spend is real and growing — the per-token economics [documented in the banana stand](/post/banana-stand) do clear at API prices. The circle is layered on top of a real business, not floating free.
+- **Government money.** Stargate's $500B has federal support around it, and the "strategic infrastructure" framing — the same one behind the [power-war math](/post/the-power-war) — makes a federal backstop more plausible than not. Washington has already signaled it treats frontier AI as a national asset.
+- **Sovereign wealth.** UAE's MGX, Saudi Arabia's PIF, and other Gulf funds are among the largest check-writers in every major AI round. Their time horizons and risk tolerance are not those of public markets — and they don't publish quarterly earnings.
+- **The hardware itself.** GPUs retain real resale value, even after the 85% decline on H100s. A fire sale is painful, but it's not zero.
+
+Here's the thing about backstops, though: they don't stop the circle from breaking. They determine **who eats the loss when it does**. A backstop is a transfer of pain, not a removal of it. If sovereign funds absorb the write-downs, the pain is invisible to public markets — until the funds need their money back. If the government backstops the debt, the circle's losses become the taxpayer's line item. If Microsoft and Google absorb it through earnings, the loop survives and market concentration deepens — the same handful of companies end up owning even more of everything.
+
+So the honest version of the bull case is not "the loop is fine." It's "the loop will be saved, and the bill will be socialized to someone." That is its own risk: when the largest financial structure in history has its losses guaranteed by governments, the incentive to keep the circle turning — long past the point where it makes economic sense — becomes political. That's not a reason to short the loop. It's a reason to watch where the guarantees are written, because that's where the next decade of fiscal policy is being decided.
+
 ## What to Watch
 
 - **Nvidia's guarantees** — how much OpenAI data-center debt Nvidia is on the hook for, and whether it shows up on anyone's balance sheet
 - **Anthropic's IPO** — the first time the loop's paper values meet a real market bid for a major lab
 - **The depreciation debate** — if regulators or auditors force shorter hardware lives, ~$176B of flattered earnings starts leaking out of the loop
 - **Debt-market appetite** — the next rate hiccup or credit event is the real test; the loop's outside funding is the only part of it that can actually say no
+- **Where the guarantees are written** — sovereign funds, government programs, and parent-company balance sheets; backstops don't prevent the break, they decide who eats it
 - **CoreWeave's churn** — a neocloud whose two biggest "customers" are also its investors and supplier
 
 The closing line, from my earlier post on [why the price war was the warning](/post/the-power-war): letters don't ship, models do. The same logic applies here. A normal vendor is paid in cash. These vendors are paid in ownership of the thing they sell to — and the revenue they report is the same money going around in a circle. That's not financing. That's a circle. And circles are beautiful until the outside stops feeding them.
