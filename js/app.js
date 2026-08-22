@@ -387,8 +387,154 @@ async function renderPost(app, slug) {
         wireMermaidZoom(el);
       } catch (e) { console.warn('Mermaid render failed:', e); }
     }
+    // ---- Media blocks: charts, video, audio ----
+    // Author as fenced code blocks with a JSON spec:
+    //   ```chart  {"type":"line","title":"...","labels":[...],"datasets":[...]}
+    //   ```video  {"src":"assets/...mp4","poster":"assets/...jpg","caption":"..."}
+    //   ```audio  {"src":"assets/...mp3","caption":"..."}
+    // Relative paths under assets/ are rewritten to site-root absolute.
+    renderMediaBlocks(el);
   } catch (err) {
     el.innerHTML = `<div class="no-results">Could not load this article.</div>`;
+  }
+}
+
+// ---- Media blocks: charts / video / audio ----
+let chartQueue = [];
+const MEDIA_PALETTE = ['#d19a66', '#7aa2f7', '#98c379', '#e06c75', '#c678dd', '#56b6c2', '#e5c07b'];
+
+function mediaSrc(path) {
+  if (!path) return path;
+  if (/^[a-z]+:\/\//i.test(path) || path.startsWith('/') || path.startsWith('data:')) return path;
+  return '/' + path;
+}
+
+function wrapMedia(el, spec) {
+  const wrap = document.createElement('figure');
+  wrap.className = 'media-wrap';
+  wrap.appendChild(el);
+  if (spec.caption) {
+    const cap = document.createElement('figcaption');
+    cap.textContent = spec.caption;
+    wrap.appendChild(cap);
+  }
+  return wrap;
+}
+
+function mediaError(msg) {
+  const d = document.createElement('div');
+  d.className = 'media-error';
+  d.textContent = msg;
+  return d;
+}
+
+function renderMediaBlocks(el) {
+  const blocks = el.querySelectorAll('code.language-chart, code.language-video, code.language-audio');
+  if (!blocks.length) return;
+  for (const code of blocks) {
+    const lang = code.className.match(/language-([a-z]+)/)?.[1];
+    const pre = code.closest('pre');
+    if (!pre || !lang) continue;
+    let spec = {};
+    try { spec = JSON.parse(code.textContent); }
+    catch (e) { pre.replaceWith(mediaError('Media block: invalid JSON — ' + e.message)); continue; }
+    if (lang === 'chart') {
+      const wrap = document.createElement('div');
+      wrap.className = 'chart-wrap';
+      const canvas = document.createElement('canvas');
+      wrap.appendChild(canvas);
+      pre.replaceWith(wrap);
+      chartQueue.push({ canvas, spec });
+    } else if (lang === 'video') {
+      const v = document.createElement('video');
+      v.controls = true;
+      v.preload = 'metadata';
+      v.playsInline = true;
+      if (spec.poster) v.poster = mediaSrc(spec.poster);
+      const s = document.createElement('source');
+      s.src = mediaSrc(spec.src);
+      s.type = spec.type || 'video/mp4';
+      v.appendChild(s);
+      pre.replaceWith(wrapMedia(v, spec));
+    } else if (lang === 'audio') {
+      const a = document.createElement('audio');
+      a.controls = true;
+      a.preload = 'metadata';
+      const s = document.createElement('source');
+      s.src = mediaSrc(spec.src);
+      s.type = spec.type || 'audio/mpeg';
+      a.appendChild(s);
+      pre.replaceWith(wrapMedia(a, spec));
+    }
+  }
+  flushCharts();
+}
+
+function flushCharts() {
+  if (typeof Chart === 'undefined') { setTimeout(flushCharts, 200); return; }
+  while (chartQueue.length) {
+    const { canvas, spec } = chartQueue.shift();
+    const dark = spec.dark !== false;
+    const grid = dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.08)';
+    const tick = dark ? '#9a9a9a' : '#666666';
+    const family = "'Inter', system-ui, sans-serif";
+    const type = spec.type || 'line';
+    const labels = spec.labels || [];
+    const datasets = (spec.datasets || []).map((ds, i) => {
+      const c = ds.color || MEDIA_PALETTE[i % MEDIA_PALETTE.length];
+      return {
+        label: ds.label || '',
+        data: ds.data || [],
+        borderColor: c,
+        backgroundColor: type === 'line' ? c : c + '99',
+        borderWidth: 2,
+        tension: type === 'line' ? 0.3 : 0,
+        fill: type === 'line' && ds.fill !== false ? 'origin' : false,
+        pointRadius: ds.points ? 3 : 0,
+        pointBackgroundColor: c,
+      };
+    });
+    const yFmt = spec.yFormat || 'number';
+    const fmt = v => {
+      if (yFmt === 'currency') return '$' + Number(v).toLocaleString('en-US');
+      if (yFmt === 'percent') return v + '%';
+      if (yFmt === 'compact') return Intl.NumberFormat('en', { notation: 'compact' }).format(v);
+      return Number(v).toLocaleString('en-US');
+    };
+    new Chart(canvas.getContext('2d'), {
+      type,
+      data: { labels, datasets },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        aspectRatio: spec.aspectRatio || 2,
+        plugins: {
+          title: {
+            display: !!spec.title,
+            text: spec.title || '',
+            color: tick,
+            font: { family, size: 13, weight: '600' },
+            padding: { bottom: 14 },
+          },
+          legend: {
+            display: spec.legend !== false && datasets.length > 1,
+            labels: { color: tick, boxWidth: 12, boxHeight: 12, font: { family, size: 11 } },
+          },
+          tooltip: {
+            backgroundColor: dark ? 'rgba(15,23,41,0.95)' : 'rgba(255,255,255,0.95)',
+            titleColor: dark ? '#e6e6e6' : '#111',
+            bodyColor: dark ? '#c9c9c9' : '#333',
+            borderColor: dark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)',
+            borderWidth: 1,
+            callbacks: { label: ctx => ' ' + ctx.dataset.label + ': ' + fmt(ctx.parsed.y ?? ctx.parsed) },
+          },
+        },
+        scales: (type === 'line' || type === 'bar') ? {
+          x: { ticks: { color: tick, maxTicksLimit: 12, font: { family, size: 10 } }, grid: { color: grid } },
+          y: { ticks: { color: tick, font: { family, size: 10 }, callback: fmt }, grid: { color: grid }, beginAtZero: spec.zero === true },
+        } : {},
+      },
+    });
   }
 }
 

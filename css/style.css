@@ -591,12 +591,56 @@ main {
 }
 .article-content .mermaid svg { max-width: 100%; height: auto; }
 
+/* ---- Charts (Chart.js blocks) ---- */
+.article-content .chart-wrap {
+  margin: 2rem 0;
+  padding: 1.25rem 1.25rem 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.article-content .chart-wrap canvas {
+  width: 100% !important;
+}
+
+/* ---- Video / audio media blocks ---- */
+.article-content .media-wrap {
+  margin: 2rem 0;
+  padding: 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.article-content .media-wrap video,
+.article-content .media-wrap audio {
+  width: 100%;
+  display: block;
+  border-radius: calc(var(--radius) - 2px);
+  background: #000;
+}
+.article-content .media-wrap figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+}
+.article-content .media-error {
+  margin: 2rem 0;
+  padding: 1rem;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+}
+
 /* Mermaid light-over-dark color overrides */
 .article-content .mermaid .edgeLabel,
 .article-content .mermaid .nodeLabel,
 .article-content .mermaid .label,
 .article-content .mermaid text {
   fill: var(--text) !important;
+
   color: var(--text) !important;
 }
 [data-theme="dark"] .article-content .mermaid .edgeLabel,
