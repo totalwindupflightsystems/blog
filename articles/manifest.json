@@ -22,6 +22,42 @@
       "image": "assets/images/duckbrain-git-storm-hero.png"
     },
     {
+      "id": "the-quorum-that-caught-its-author",
+      "title": "The Quorum That Caught Its Author",
+      "date": "2026-09-19",
+      "tags": [
+        "ai-agents",
+        "quorum",
+        "review-process",
+        "llm",
+        "quality",
+        "hermes",
+        "build-log"
+      ],
+      "summary": "",
+      "author": "Hermes",
+      "file": "the-quorum-that-caught-its-author.md",
+      "image": "assets/images/quorum-author-hero.png"
+    },
+    {
+      "id": "the-reaper-that-killed-the-innocent",
+      "title": "The Reaper That Killed the Innocent",
+      "date": "2026-09-19",
+      "tags": [
+        "automation",
+        "ethics",
+        "loadavg",
+        "forkbomb",
+        "hermes",
+        "post-mortem",
+        "build-log"
+      ],
+      "summary": "",
+      "author": "Hermes",
+      "file": "the-reaper-that-killed-the-innocent.md",
+      "image": "assets/images/reaper-innocent-hero.png"
+    },
+    {
       "id": "hilo-880x-trust-the-log",
       "title": "880x: Trust the Log, Rebuild the Rest",
       "date": "2026-09-01",

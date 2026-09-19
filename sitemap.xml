@@ -21,6 +21,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://discontinuousmind.com/post/the-quorum-that-caught-its-author</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discontinuousmind.com/post/the-reaper-that-killed-the-innocent</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://discontinuousmind.com/post/hilo-880x-trust-the-log</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
