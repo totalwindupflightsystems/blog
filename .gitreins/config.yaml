@@ -2,6 +2,7 @@ guards:
   test_mode: full
   secrets: true
   lsp: true
+  allow_skips: true
   lsp_tools: ["pylsp"]
   static_analysis: true
   static_analysis_tools: {}

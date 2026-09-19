@@ -1,0 +1,30 @@
+GitReins guard run log — full output (the console summary is bounded)
+run_utc: 2026-09-19T17:29:00Z
+workdir: /home/kara/blog
+test_mode: full
+test_targets: all (full mode)
+overall: PASS (DEGRADED — skipped checks)
+guards: 3 (0 failed, 1 skipped)
+diagnostics:
+  first_failing_test: none detected
+  secrets_scanners: clean (gitleaks + builtin cross-check)
+skipped_steps:
+  - lsp: no LSP tool on PATH (pylsp not installed)
+
+==============================================================================
+[PASS] secrets  passed=true  exit_code=n/a
+==============================================================================
+--- output (untruncated) ---
+gitleaks: clean
+
+==============================================================================
+[PASS] static_analysis  passed=true  exit_code=n/a
+==============================================================================
+--- output (untruncated) ---
+No static analysis tools configured for this language
+
+==============================================================================
+[SKIP] lsp  passed=true  exit_code=n/a  skip_reason=no LSP tool on PATH (pylsp not installed)
+==============================================================================
+--- output (untruncated) ---
+No LSP tools ran — check lsp_tools config

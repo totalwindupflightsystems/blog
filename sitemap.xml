@@ -16,6 +16,11 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://discontinuousmind.com/post/duckbrain-git-storm</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://discontinuousmind.com/post/hilo-880x-trust-the-log</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
