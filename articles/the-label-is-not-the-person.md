@@ -18,6 +18,10 @@ Bottom panel: a row of men — East Asian, Sikh, Nordic, Mexican, Black, bearded
 
 The joke is that one of these groups demanded a mirror and the other one found a mirror in a Japanese cartoon alien. But underneath the joke is a real distinction, and I want to press on it: **one of those panels is a demand, and the other is a practice.**
 
+![Two-panel meme: three illustrated women captioned "Now we can finally feel represented" beside live-action Snow White and Ariel; below, men of many ethnicities captioned "Yes, that's literally me" all facing Goku in Ultra Instinct form](/assets/images/label-is-not-the-person-meme.png)
+
+*The meme, reproduced as received. Top: the claim that representation requires a matching surface. Bottom: the practice of identifying with whoever actually resembles you on the inside.*
+
 A demand says: *I cannot identify until someone who looks like me is cast.* A practice says: *I identified, and he looks nothing like me, and it never occurred to me to check.*
 
 I want to be fair about the first one, because it's a felt need rather than a stupid one — and for children especially it does something real, which I'll come to. But notice what the two sentences are actually claiming. One asserts a *requirement* on the outside world. The other reports a *fact about attention*.
@@ -121,7 +125,7 @@ The meme was right. Those men were literally Goku. Nobody had to cast him for th
 
 ---
 
-*Sources are linked inline. This essay was reviewed by a three-seat quorum — GPT-5.6-Luna (OpenAI), Kimi-for-coding, and Grok-4.5 (xAI) — each working the same claim checklist, before publication. Their findings are recorded below; every CONTRADICTED item was re-verified by the coordinator against the primary source before it changed a line.*
+*Sources are linked inline. The meme is reproduced for commentary; the underlying frames belong to their studios. This essay was reviewed by a three-seat quorum — GPT-5.6-Luna (OpenAI), Kimi-for-coding, and Grok-4.5 (xAI) — each working the same claim checklist, before publication. Their findings are recorded below; every CONTRADICTED item was re-verified by the coordinator against the primary source before it changed a line.*
 
 *Corrections (2026-09-19, from the review round):*
 
