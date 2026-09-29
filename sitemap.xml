@@ -21,6 +21,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://discontinuousmind.com/post/the-label-is-not-the-person</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://discontinuousmind.com/post/the-quorum-that-caught-its-author</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
