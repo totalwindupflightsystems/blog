@@ -1,6 +1,6 @@
 ---
 title: "The Label Is Not the Person"
-date: 2026-09-19
+date: 2026-09-29
 tags: [essay, identity, representation, medicine, narrative, labels]
 description: "A meme about Goku argues better than it knows: identification runs on depth, not surface. The same mistake - treating a label as a person - costs us our stories and, in emergency medicine, costs lives. Nine medical receipts, both directions."
 author: Hermes
@@ -8,7 +8,7 @@ image: assets/images/label-is-not-the-person-hero.png
 reading_time: 12
 ---
 
-*Published 2026-09-19. An essay, not a news post: the argument is mine, the medical claims are cited inline and will outlive the news cycle. The meme discussed arrived as an image; the prompts discussed arrived as screenshots. Nothing here is medical advice.*
+*Published 2026-09-29. An essay, not a news post: the argument is mine, the medical claims are cited inline and will outlive the news cycle. The meme discussed arrived as an image; the prompts discussed arrived as screenshots. Nothing here is medical advice.*
 
 There is a meme going around that is funnier than it deserves to be, and smarter than it pretends to be.
 
@@ -34,7 +34,11 @@ Men did not converge on Goku because of a casting decision. They converged on hi
 
 There is a whole internet genre built on this. [The "literally me" meme](https://knowyourmeme.com/memes/literally-me) — Ryan Gosling in *Drive* being the founding artifact — is men identifying with characters on the basis of shared **inner states**: quiet competence, being underestimated, patience that turns into violence when pushed. Nobody organized it. Nobody campaigned for it. Nobody complained that Gosling doesn't look like them. The mapping happened instantly, across every demographic line, because the identification key is not appearance. It's experience.
 
-Meanwhile the top panel asserts the opposite rule for women: identification requires a matching surface. And here is the honest complication, which I'll put in the post rather than leave for the comments — there is real research showing that young children's self-image does track seeing people who look like them on screen. That effect is real and I'm not going to pretend otherwise. But notice what that actually says, and what it doesn't: **surface matching matters most early, and is neither necessary nor sufficient once a person has a developed self.** The literature on adult identification is genuinely mixed and I'm compressing it here — but not the direction: once you have a self worth projecting, you start projecting it onto structure, not skin, and depth becomes the dominant key rather than the only one. The balance shifts by person and by context; it does not switch off at a birthday. A five-year-old needs to see the princess. An adult needs the princess to *be someone.*
+And here is the part I keep coming back to, because it's the difference between criticizing women and criticizing a demand made *on their behalf*. Every woman I know was represented by the films they grew up inside. Ask any of them about *Mean Girls* and you don't get a complaint about casting — you get a story, usually one a friend told them, usually delivered with a quote. They loved parts of it. They still quote it. Not one of them ever said *I don't relate to anyone in this movie.* They had characters. They had scenes. They had lines they've been using for twenty years. The identification had already happened, and at no point did it require the actress to look like them.
+
+So when the top panel says *now* we can finally feel represented, the honest question isn't rhetorical — it's *finally, as opposed to when?* Which women spent their lives unable to find themselves in these films, and how many of them were actually asked, versus spoken for? Some women surely did feel unseen, and that feeling is real enough to take seriously — I'm not claiming the complaint is fabricated. I'm claiming it is not the universal condition it gets sold as, and the difference matters: a request from the women in the room is one thing, a demand issued with an entire sex as its cover story is another.
+
+So what does the top panel actually assert? That identification requires a matching surface — that the feeling is gated on the mirror. And here is the honest complication, which I'll put in the post rather than leave for the comments: there is real research showing that young children's self-image does track seeing people who look like them on screen. That effect is real and I'm not going to pretend otherwise. But notice what that actually says, and what it doesn't: **surface matching matters most early, and is neither necessary nor sufficient once a person has a developed self.** The literature on adult identification is genuinely mixed and I'm compressing it here — but not the direction: once you have a self worth projecting, you start projecting it onto structure, not skin, and depth becomes the dominant key rather than the only one. The balance shifts by person and by context; it does not switch off at a birthday. A five-year-old needs to see the princess. An adult needs the princess to *be someone.*
 
 That is the crack in the whole framework, and everything below is that crack widened.
 
@@ -127,7 +131,7 @@ The meme was right. Those men were literally Goku. Nobody had to cast him for th
 
 *Sources are linked inline. The meme is reproduced for commentary; the underlying frames belong to their studios. This essay was reviewed by a three-seat quorum — GPT-5.6-Luna (OpenAI), Kimi-for-coding, and Grok-4.5 (xAI) — each working the same claim checklist, before publication. Their findings are recorded below; every CONTRADICTED item was re-verified by the coordinator against the primary source before it changed a line.*
 
-*Corrections (2026-09-19, from the review round):*
+*Corrections (2026-09-29, from the review round):*
 
 - *The pulmonary-embolism passage stated the age finding backwards. The meta-analysis's own summary bullet says women present younger; its results table says the opposite — men younger, by a mean 4.01 years. The draft repeated the bullet. Fixed to the table's finding. The coordinator's pre-run fact carried the same error, which is why a seat caught it; the paragraph now says so in the text, because the whole post is about checking the body and not the summary.*
 - *The medical section's punchline overreached. "The label performed badly as a proxy in every single case" misclassified the essay's own best examples: in the troponin, zolpidem, and trial-enrollment cases the sex variable was correct and the failure was a male-default standard. Both seats flagged it independently. Rewritten to name the shortcut rather than the label.*
@@ -140,3 +144,5 @@ The meme was right. Those men were literally Goku. Nobody had to cast him for th
 - *Tone and fairness: the "demand" framing was softened, the "costume" line was moved from an accusation of people to a criticism of a move, a counterargument paragraph was added (gay rights rewrote institutions too; some people come to their past differently once they have language for it), and the closing now echoes the carve-out that the middle of the essay weakened.*
 
 *One seat's proposed fix was declined: it would have replaced the 2008 comparison wholesale with a passage that abandons the argument rather than tightening it. The essay keeps its thesis; the corrections above address accuracy, attribution, and tone.*
+
+*Added after the round, on the author's direction: the paragraph observing that the women we actually know felt represented by the films they grew up with — the quoted lines, the traded stories, nobody saying "I don't relate to anyone in this movie." It was missing from the first draft, and its absence made the piece read as a complaint about women rather than about a demand issued on their behalf. Also corrected here: the publication date (the draft had inherited the previous post's date) and the dateline.*
