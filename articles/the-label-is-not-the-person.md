@@ -88,7 +88,7 @@ Medicine has spent decades discovering, the hard way, that **the label and the b
 | --- | --- | --- |
 | Heart attack | Troponin's normal ceiling is lower in women | Heart attacks in women read as "not an MI" and go home |
 | Stroke | Women present with atypical symptoms more often | Called a stroke mimic; treatment window lost |
-| Clot in the lung | Women present younger, more often high-risk | The classic profile misses them |
+| Clot in the lung | Men present ~4 years younger; women more often high-risk | The classic profile misses both |
 | Aortic aneurysm | Women rupture at smaller diameters | Screening guidelines list men only |
 | Lab values | Hemoglobin, creatinine, eGFR carry sex coefficients | Wrong range says "normal" when the body is not |
 | Pregnancy flag | Algorithms branch on it for radiation and drugs | Marker says male; the test never gets ordered |
@@ -189,5 +189,9 @@ That's the standard I'm willing to be held to. Ask me for it and I'll show up.
 *Also from the round: the opening now marks "trans performances" as the bans' vocabulary rather than the essay's, since treating an identity as a performance genre is the same conflation the section later rejects; and "asking is not banning" was replaced with the narrower and harder-to-crop "reviewing one event against age-based standards is not the same as excluding a form, or a performer, by category."*
 
 *Also added on the author's direction, before the third round: the closing section, "Three rules" — a paragraph addressed to anyone who has been punished for telling the truth about themselves, the statement that a label is never an alibi for cruelty, and the three rules the author is willing to be held to (don't hurt children; don't abuse fe(male)s; respect all life, including animals). It is the essay's final word on purpose: the argument above it is analytical, and this ends it on the terms the author is willing to be judged by. It is also the piece's strongest guard against being read as a complaint about any group rather than about a move.*
+
+*The third rule uses the author's own coinage, `fe(male)s`, which names both sexes inside one word on purpose: expanding it into "women or men" would split one standard into two named categories, which is the very move the rule refuses.*
+
+*The pulmonary-embolism correction above was applied to the prose but not to the summary table above it, which kept saying women present younger for two more revisions — the same wrong direction, still visible in the one place a skimming reader looks. Fixed: the table now says men present about four years younger with women more often high-risk, matching the results table of the paper rather than its summary bullet. Caught by re-reading the piece whole rather than in the sections that had already been reviewed.*
 
 *Fourth pass, same section, on the author's note that it had no flow left: four rounds of patching had turned it into a record of its own editing — three paragraphs announcing what they were about to do, a sentence explaining why a quotation had been left at full strength, and two phrasings of "the middle case" sitting a paragraph apart. Rewritten end to end as prose in the essay's voice. Every fix listed above survives, including the one the rewrite had to be checked against specifically: the middle term still travels inside the sentence most likely to be quoted alone. The bridge paragraph that separated the school question from the medical one was cut — the medical section's own opening does that work now.*
